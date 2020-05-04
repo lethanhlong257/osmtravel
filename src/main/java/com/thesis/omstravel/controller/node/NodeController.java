@@ -25,12 +25,16 @@ public class NodeController {
         return nodeRepository.findAll();
     }
 
-    @GetMapping(path = APIConstant.API_FIND_NODES_IN_DISTANCE + "/{dist}", produces = "application/json")
+    @GetMapping(path = "/api/v1/get/nodes/distance/{dist}/{lat}/{lon}}", produces = "application/json")
     @ResponseBody
-    public List<Node> listNodeInDistance(@PathVariable String dist) {
+    public List<Node> listNodeInDistance(@PathVariable String dist, @PathVariable String lon, @PathVariable String lat) {
         List<Node> listNodeInDistance = null;
-        if (checkNumberic.isNumeric(dist)) {
-            listNodeInDistance = nodeService.listNodeInDistance(10.748902, 106.687569, Double.parseDouble(dist));
+        if (checkNumberic.isNumeric(dist) && checkNumberic.isNumeric(lat) && checkNumberic.isNumeric(lon)) {
+            // lat: 10.748902, 106.687569
+            listNodeInDistance = nodeService.listNodeInDistance(
+                    Double.parseDouble(lat),
+                    Double.parseDouble(lon),
+                    Double.parseDouble(dist));
             return listNodeInDistance;
         } else {
             return listNodeInDistance;
