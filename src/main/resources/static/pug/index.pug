@@ -1,0 +1,579 @@
+extends _inc
+
+block article
+  section.slider
+    .owl-carousel.slider-carousel.owl-theme
+      .item
+        a(href='#')
+          img(src='../img/slider-1.png')
+      .item
+        a(href='#')
+          img(src='../img/slider-1.png')
+
+    .search
+      .container
+        h1 Tìm kiếm ngay cho mình một căn hộ !
+        form
+          input(type='text', placeholder='Nhập từ khóa . . .')
+          select
+            option Bán
+            option Cho thuê
+          select
+            option Loại BĐS
+            option Căn hộ cho thuê
+            option Căn hộ bán
+          select
+            option Tỉnh / Thành
+            option TP Hồ Chí Minh
+          select
+            option Quận / Huyện
+            option Quận 2
+          button(type='submit') Tìm kiếm
+  
+  section.rent-suggest
+    .container
+      h3 Bạn muốn thuê căn hộ tại Quận nào TP. Hồ Chí Minh?
+
+      .swiper-container.swiper-suggest
+        .swiper-wrapper
+          .swiper-slide
+            a(href='cho-thue.html')
+              .box-suggest
+                img(src='../img/rent-suggest-1.png')
+                span Có bài đăng mới
+                .box-suggest-detail
+                  h1 Quận 1
+                  h5 15 căn đang cần cho thuê
+          
+          .swiper-slide
+            a(href='cho-thue.html')
+              .box-suggest
+                img(src='../img/rent-suggest-2.png')
+                span Có bài đăng mới
+                .box-suggest-detail
+                  h1 Quận Thủ Đức
+                  h5 15 căn đang cần cho thuê
+          
+          .swiper-slide
+            a(href='cho-thue.html')
+              .box-suggest
+                img(src='../img/sale-1.png')
+                span Có bài đăng mới
+                .box-suggest-detail
+                  h1 Quận Tân Bình
+                  h5 15 căn đang cần cho thuê
+          
+          .swiper-slide
+            a(href='cho-thue.html')
+              .box-suggest
+                img(src='../img/rent-suggest-1.png')
+                span Có bài đăng mới
+                .box-suggest-detail
+                  h1 Quận 1
+                  h5 15 căn đang cần cho thuê
+          
+          .swiper-slide
+            a(href='cho-thue.html')
+              .box-suggest
+                img(src='../img/rent-suggest-2.png')
+                span Có bài đăng mới
+                .box-suggest-detail
+                  h1 Quận 1
+                  h5 15 căn đang cần cho thuê
+          
+          .swiper-slide
+            a(href='cho-thue.html')
+              .box-suggest
+                img(src='../img/rent-suggest-1.png')
+                span Có bài đăng mới
+                .box-suggest-detail
+                  h1 Quận 1
+                  h5 15 căn đang cần cho thuê
+          
+          .swiper-slide
+            a(href='cho-thue.html')
+              .box-suggest
+                img(src='../img/rent-suggest-2.png')
+                span Có bài đăng mới
+                .box-suggest-detail
+                  h1 Quận 1
+                  h5 15 căn đang cần cho thuê
+          
+          .swiper-slide
+            a(href='cho-thue.html')
+              .box-suggest
+                img(src='../img/rent-suggest-1.png')
+                span Có bài đăng mới
+                .box-suggest-detail
+                  h1 Quận 1
+                  h5 15 căn đang cần cho thuê
+          
+          .swiper-slide
+            a(href='cho-thue.html')
+              .box-suggest
+                img(src='../img/rent-suggest-1.png')
+                span Có bài đăng mới
+                .box-suggest-detail
+                  h1 Quận 1
+                  h5 15 căn đang cần cho thuê
+          
+          .swiper-slide
+            a(href='cho-thue.html')
+              .box-suggest
+                img(src='../img/rent-suggest-1.png')
+                span Có bài đăng mới
+                .box-suggest-detail
+                  h1 Quận 1
+                  h5 15 căn đang cần cho thuê
+
+        .swiper-button-next
+        .swiper-button-prev
+
+  section.rent
+    .container
+      .title-page
+        h3
+          a BẤT ĐỘNG SẢN CHO THUÊ mới
+
+      .swiper-container.swiper-suggest
+        .swiper-wrapper
+          .swiper-slide
+            .box-rent
+              .box-rent-date
+                i.mdi.mdi-calendar-outline 
+                | 22/04/2019
+              .box-rent-img
+                i.mdi.mdi-image-search-outline(title="Nhấn để phóng to ảnh" data-caption="Căn hộ cao cấp nằm giữa trung tâm Quận 1" data-fancybox="gallery" href="../img/rent-1.png")
+                a(href='chi-tiet-cho-thue.png')
+                  img(src='../img/rent-1.png')
+              .box-rent-detail
+                h3
+                  a(href='chi-tiet-cho-thue.png')
+                    | Căn hộ cao cấp nằm giữa trung tâm Quận 1
+                h5 
+                  i.mdi.mdi-map-marker-outline
+                  | 10 Nguyễn Thái Bình, Quận 1, TPHCM
+                .box-rent-detail-option
+                  span 2 Phòng ngủ
+                  span 2 Phòng tắm
+                  span 50m2
+              .box-rent-price
+                h3 50tr
+                  span / Tháng
+                h6 CĂN HỘ CHO thuê
+          
+          .swiper-slide
+            .box-rent
+              .box-rent-date
+                i.mdi.mdi-calendar-outline 
+                | 22/04/2019
+              .box-rent-img
+                i.mdi.mdi-image-search-outline(title="Nhấn để phóng to ảnh" data-caption="Căn hộ cao cấp nằm giữa trung tâm Quận 1" data-fancybox="gallery" href="../img/rent-1.png")
+                a(href='chi-tiet-cho-thue.png')
+                  img(src='../img/rent-suggest-2.png')
+              .box-rent-detail
+                h3
+                  a(href='chi-tiet-cho-thue.png')
+                    | Căn hộ cao cấp nằm giữa trung tâm Quận 1
+                h5 
+                  i.mdi.mdi-map-marker-outline
+                  | 10 Nguyễn Thái Bình, Quận 1, TPHCM
+                .box-rent-detail-option
+                  span 2 Phòng ngủ
+                  span 2 Phòng tắm
+                  span 50m2
+              .box-rent-price
+                h3 50tr
+                  span / Tháng
+                h6 CĂN HỘ CHO thuê
+          
+          .swiper-slide
+            .box-rent
+              .box-rent-date
+                i.mdi.mdi-calendar-outline 
+                | 22/04/2019
+              .box-rent-img
+                i.mdi.mdi-image-search-outline(title="Nhấn để phóng to ảnh" data-caption="Căn hộ cao cấp nằm giữa trung tâm Quận 1" data-fancybox="gallery" href="../img/rent-1.png")
+                a(href='chi-tiet-cho-thue.png')
+                  img(src='../img/rent-suggest-2.png')
+              .box-rent-detail
+                h3
+                  a(href='chi-tiet-cho-thue.png')
+                    | Căn hộ cao cấp nằm giữa trung tâm Quận 1
+                h5 
+                  i.mdi.mdi-map-marker-outline
+                  | 10 Nguyễn Thái Bình, Quận 1, TPHCM
+                .box-rent-detail-option
+                  span 2 Phòng ngủ
+                  span 2 Phòng tắm
+                  span 50m2
+              .box-rent-price
+                h3 50tr
+                  span / Tháng
+                h6 CĂN HỘ CHO thuê
+          
+          .swiper-slide
+            .box-rent
+              .box-rent-date
+                i.mdi.mdi-calendar-outline 
+                | 22/04/2019
+              .box-rent-img
+                i.mdi.mdi-image-search-outline(title="Nhấn để phóng to ảnh" data-caption="Căn hộ cao cấp nằm giữa trung tâm Quận 1" data-fancybox="gallery" href="../img/rent-1.png")
+                a(href='chi-tiet-cho-thue.png')
+                  img(src='../img/sale-1.png')
+              .box-rent-detail
+                h3
+                  a(href='chi-tiet-cho-thue.png')
+                    | Căn hộ cao cấp nằm giữa trung tâm Quận 1
+                h5 
+                  i.mdi.mdi-map-marker-outline
+                  | 10 Nguyễn Thái Bình, Quận 1, TPHCM
+                .box-rent-detail-option
+                  span 2 Phòng ngủ
+                  span 2 Phòng tắm
+                  span 50m2
+              .box-rent-price
+                h3 50tr
+                  span / Tháng
+                h6 CĂN HỘ CHO thuê
+          
+          .swiper-slide
+            .box-rent
+              .box-rent-date
+                i.mdi.mdi-calendar-outline 
+                | 22/04/2019
+              .box-rent-img
+                i.mdi.mdi-image-search-outline(title="Nhấn để phóng to ảnh" data-caption="Căn hộ cao cấp nằm giữa trung tâm Quận 1" data-fancybox="gallery" href="../img/rent-1.png")
+                a(href='chi-tiet-cho-thue.png')
+                  img(src='../img/rent-1.png')
+              .box-rent-detail
+                h3
+                  a(href='chi-tiet-cho-thue.png')
+                    | Căn hộ cao cấp nằm giữa trung tâm Quận 1
+                h5 
+                  i.mdi.mdi-map-marker-outline
+                  | 10 Nguyễn Thái Bình, Quận 1, TPHCM
+                .box-rent-detail-option
+                  span 2 Phòng ngủ
+                  span 2 Phòng tắm
+                  span 50m2
+              .box-rent-price
+                h3 50tr
+                  span / Tháng
+                h6 CĂN HỘ CHO thuê
+          
+          .swiper-slide
+            .box-rent
+              .box-rent-date
+                i.mdi.mdi-calendar-outline 
+                | 22/04/2019
+              .box-rent-img
+                i.mdi.mdi-image-search-outline(title="Nhấn để phóng to ảnh" data-caption="Căn hộ cao cấp nằm giữa trung tâm Quận 1" data-fancybox="gallery" href="../img/rent-1.png")
+                a(href='chi-tiet-cho-thue.png')
+                  img(src='../img/rent-1.png')
+              .box-rent-detail
+                h3
+                  a(href='chi-tiet-cho-thue.png')
+                    | Căn hộ cao cấp nằm giữa trung tâm Quận 1
+                h5 
+                  i.mdi.mdi-map-marker-outline
+                  | 10 Nguyễn Thái Bình, Quận 1, TPHCM
+                .box-rent-detail-option
+                  span 2 Phòng ngủ
+                  span 2 Phòng tắm
+                  span 50m2
+              .box-rent-price
+                h3 50tr
+                  span / Tháng
+                h6 CĂN HỘ CHO thuê
+          
+          .swiper-slide
+            .box-rent
+              .box-rent-date
+                i.mdi.mdi-calendar-outline 
+                | 22/04/2019
+              .box-rent-img
+                i.mdi.mdi-image-search-outline(title="Nhấn để phóng to ảnh" data-caption="Căn hộ cao cấp nằm giữa trung tâm Quận 1" data-fancybox="gallery" href="../img/rent-1.png")
+                a(href='chi-tiet-cho-thue.png')
+                  img(src='../img/rent-1.png')
+              .box-rent-detail
+                h3
+                  a(href='chi-tiet-cho-thue.png')
+                    | Căn hộ cao cấp nằm giữa trung tâm Quận 1
+                h5 
+                  i.mdi.mdi-map-marker-outline
+                  | 10 Nguyễn Thái Bình, Quận 1, TPHCM
+                .box-rent-detail-option
+                  span 2 Phòng ngủ
+                  span 2 Phòng tắm
+                  span 50m2
+              .box-rent-price
+                h3 50tr
+                  span / Tháng
+                h6 CĂN HỘ CHO thuê
+          
+        .swiper-button-next
+        .swiper-button-prev
+
+      .rent-all
+        a(href='cho-thue.html') Xem tất cả
+
+  section.sale
+    .container
+      .title-page
+        h3
+          a BẤT ĐỘNG SẢN bán mới
+      
+      .owl-carousel.sale-carousel.owl-theme
+        .item
+          .box-sale
+            .box-sale-img
+              .date
+                i.mdi.mdi-calendar-outline
+                | 22/04/2019
+              .user
+                i.mdi.mdi-account-outline
+                | Anh Thái
+              .zoom
+                i.mdi.mdi-image-search-outline(title="Nhấn để phóng to ảnh" data-caption="Villa 243 W 98th St" data-fancybox="gallery" href="../img/sale-1.png")
+              a(href='chi-tiet-ban.html')
+                img(src='../img/sale-1.png')
+            .box-sale-detail
+              h5 Căn hộ, Biệt thự, Nhà
+              h3 
+                a(href='chi-tiet-ban.html')
+                  | Villa 243 W 98th St
+              p
+                i.mdi.mdi-map-marker-outline
+                | 10 Nguyễn Thái Bình, Quận 1, TPHCM
+              .box-sale-detail-option
+                ul
+                  li Diện tích 100m2
+                  li 4 Phòng ngủ
+                  li 3 Phòng tắm
+                  li 1 Garage Ô tô
+            .box-sale-price
+              h5 Giá khởi điểm
+              h4 7.5 tỉ
+
+        .item
+          .box-sale
+            .box-sale-img
+              .date
+                i.mdi.mdi-calendar-outline
+                | 22/04/2019
+              .user
+                i.mdi.mdi-account-outline
+                | Anh Thái
+              .zoom
+                i.mdi.mdi-image-search-outline(title="Nhấn để phóng to ảnh" data-caption="Villa 243 W 98th St" data-fancybox="gallery" href="../img/sale-1.png")
+              a(href='chi-tiet-ban.html')
+                img(src='../img/sale-1.png')
+            .box-sale-detail
+              h5 Căn hộ, Biệt thự, Nhà
+              h3 
+                a(href='chi-tiet-ban.html')
+                  | Villa 243 W 98th St
+              p
+                i.mdi.mdi-map-marker-outline
+                | 10 Nguyễn Thái Bình, Quận 1, TPHCM
+              .box-sale-detail-option
+                ul
+                  li Diện tích 100m2
+                  li 4 Phòng ngủ
+                  li 3 Phòng tắm
+                  li 1 Garage Ô tô
+            .box-sale-price
+              h5 Giá khởi điểm
+              h4 7.5 tỉ
+        
+        .item
+          .box-sale
+            .box-sale-img
+              .date
+                i.mdi.mdi-calendar-outline
+                | 22/04/2019
+              .user
+                i.mdi.mdi-account-outline
+                | Anh Thái
+              .zoom
+                i.mdi.mdi-image-search-outline(title="Nhấn để phóng to ảnh" data-caption="Villa 243 W 98th St" data-fancybox="gallery" href="../img/sale-1.png")
+              a(href='chi-tiet-ban.html')
+                img(src='../img/sale-1.png')
+            .box-sale-detail
+              h5 Căn hộ, Biệt thự, Nhà
+              h3 
+                a(href='chi-tiet-ban.html')
+                  | Villa 243 W 98th St
+              p
+                i.mdi.mdi-map-marker-outline
+                | 10 Nguyễn Thái Bình, Quận 1, TPHCM
+              .box-sale-detail-option
+                ul
+                  li Diện tích 100m2
+                  li 4 Phòng ngủ
+                  li 3 Phòng tắm
+                  li 1 Garage Ô tô
+            .box-sale-price
+              h5 Giá khởi điểm
+              h4 7.5 tỉ
+        
+        .item
+          .box-sale
+            .box-sale-img
+              .date
+                i.mdi.mdi-calendar-outline
+                | 22/04/2019
+              .user
+                i.mdi.mdi-account-outline
+                | Anh Thái
+              .zoom
+                i.mdi.mdi-image-search-outline(title="Nhấn để phóng to ảnh" data-caption="Villa 243 W 98th St" data-fancybox="gallery" href="../img/sale-1.png")
+              a(href='chi-tiet-ban.html')
+                img(src='../img/sale-1.png')
+            .box-sale-detail
+              h5 Căn hộ, Biệt thự, Nhà
+              h3 
+                a(href='chi-tiet-ban.html')
+                  | Villa 243 W 98th St
+              p
+                i.mdi.mdi-map-marker-outline
+                | 10 Nguyễn Thái Bình, Quận 1, TPHCM
+              .box-sale-detail-option
+                ul
+                  li Diện tích 100m2
+                  li 4 Phòng ngủ
+                  li 3 Phòng tắm
+                  li 1 Garage Ô tô
+            .box-sale-price
+              h5 Giá khởi điểm
+              h4 7.5 tỉ
+        
+        .item
+          .box-sale
+            .box-sale-img
+              .date
+                i.mdi.mdi-calendar-outline
+                | 22/04/2019
+              .user
+                i.mdi.mdi-account-outline
+                | Anh Thái
+              .zoom
+                i.mdi.mdi-image-search-outline(title="Nhấn để phóng to ảnh" data-caption="Villa 243 W 98th St" data-fancybox="gallery" href="../img/sale-1.png")
+              a(href='chi-tiet-ban.html')
+                img(src='../img/rent-1.png')
+            .box-sale-detail
+              h5 Căn hộ, Biệt thự, Nhà
+              h3 
+                a(href='chi-tiet-ban.html')
+                  | Villa 243 W 98th St
+              p
+                i.mdi.mdi-map-marker-outline
+                | 10 Nguyễn Thái Bình, Quận 1, TPHCM
+              .box-sale-detail-option
+                ul
+                  li Diện tích 100m2
+                  li 4 Phòng ngủ
+                  li 3 Phòng tắm
+                  li 1 Garage Ô tô
+            .box-sale-price
+              h5 Giá khởi điểm
+              h4 7.5 tỉ
+        
+      .sale-all
+        a(href='ban.html') Xem tất cả
+  
+  section.contact-home
+    .container
+      h1 BẠN ĐANG CẦN BÁN HOẶC CHO THUÊ BẤT ĐỘNG SẢN?
+      h4 Mau chóng gửi thư về cho chúng tôi
+
+      form 
+        input(type="text", placeholder="Họ tên:")
+        input(type="text", placeholder="Số điện thoại:")
+        input(type="text", placeholder="Email:")
+        textarea(placeholder="Lời nhắn:")
+        button(type="submit") Gửi liên hệ
+      
+      h5 Hoặc liên hệ trực tiếp qua hotline: 
+        span 0357.00.9999
+
+  section.project
+    .container
+      .title-page
+        h3
+          a MỘT SỐ dự án nổi bật
+        
+      .project-zone
+        .box-project
+          a(href='chi-tiet-du-an.html')
+            img(src='../img/project-1.png')
+            .box-project-detail
+              h3 Eco Green Saigon
+              h6
+                i.mdi.mdi-map-marker-outline
+                | 10 Nguyễn Thái Bình, Quận 1, TPHCM
+            .box-project-price
+              h3 7.5 tỉ
+            span
+
+        .box-project
+          a(href='chi-tiet-du-an.html')
+            img(src='../img/project-1.png')
+            .box-project-detail
+              h3 Eco Green Saigon
+              h6
+                i.mdi.mdi-map-marker-outline
+                | 10 Nguyễn Thái Bình, Quận 1, TPHCM
+            .box-project-price
+              h3 7.5 tỉ
+            span
+        
+        .box-project
+          a(href='chi-tiet-du-an.html')
+            img(src='../img/rent-suggest-1.png')
+            .box-project-detail
+              h3 Eco Green Saigon
+              h6
+                i.mdi.mdi-map-marker-outline
+                | 10 Nguyễn Thái Bình, Quận 1, TPHCM
+            .box-project-price
+              h3 7.5 tỉ
+            span
+        
+        .box-project
+          a(href='chi-tiet-du-an.html')
+            img(src='../img/sale-1.png')
+            .box-project-detail
+              h3 Eco Green Saigon
+              h6
+                i.mdi.mdi-map-marker-outline
+                | 10 Nguyễn Thái Bình, Quận 1, TPHCM
+            .box-project-price
+              h3 7.5 tỉ
+            span
+        
+        .box-project
+          a(href='chi-tiet-du-an.html')
+            img(src='../img/project-1.png')
+            .box-project-detail
+              h3 Eco Green Saigon
+              h6
+                i.mdi.mdi-map-marker-outline
+                | 10 Nguyễn Thái Bình, Quận 1, TPHCM
+            .box-project-price
+              h3 7.5 tỉ
+            span
+        
+        .box-project
+          a(href='chi-tiet-du-an.html')
+            img(src='../img/sale-1.png')
+            .box-project-detail
+              h3 Eco Green Saigon
+              h6
+                i.mdi.mdi-map-marker-outline
+                | 10 Nguyễn Thái Bình, Quận 1, TPHCM
+            .box-project-price
+              h3 7.5 tỉ
+            span
+        

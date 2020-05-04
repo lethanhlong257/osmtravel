@@ -1,0 +1,240 @@
+extends _inc
+
+
+block article
+  section.page-slider.slider
+    .owl-carousel.slider-carousel.owl-theme
+      .item
+        a(href='#')
+          img(src='../img/slider-1.png')
+      .item
+        a(href='#')
+          img(src='../img/slider-1.png')
+
+    .search
+      .container
+        h1 Tìm kiếm ngay cho mình một căn hộ !
+        form
+          input(type='text', placeholder='Nhập từ khóa . . .')
+          select
+            option Bán
+            option Cho thuê
+          select
+            option Loại BĐS
+            option Căn hộ cho thuê
+            option Căn hộ bán
+          select
+            option Tỉnh / Thành
+            option TP Hồ Chí Minh
+          select
+            option Quận / Huyện
+            option Quận 2
+          button(type='submit') Tìm kiếm
+  
+  section.bread-crumb
+    .container
+      .bc-icons
+        nav(aria-label='breadcrumb')
+          ol.breadcrumb
+            li.breadcrumb-item
+              a(href='index.html') Trang chủ
+            li.breadcrumb-item
+              a(href='du-an.html') Dự án
+            li.breadcrumb-item.active Lorem ipsum dolor sit amet.
+
+  section.page-detail 
+    .container
+      .page-project
+        h3 Lorem ipsum dolor sit amet.
+
+        ul.nav.nav-tabs(role='tablist')
+          li.nav-item
+            a#tong-quan-tab.nav-link.active(href='#tong-quan', data-toggle='tab')
+              i.mdi.mdi-checkerboard
+              span Tổng quan
+          li
+            a#vi-tri-tab.nav-link(href='#vi-tri', data-toggle='tab')
+              i.mdi.mdi-map-outline
+              span vị trí
+          li
+            a#mat-bang-tab.nav-link(href='#mat-bang', data-toggle='tab')
+              i.mdi.mdi-floor-plan
+              span mặt bằng
+          li
+            a#nha-mau-tab.nav-link(href='#nha-mau', data-toggle='tab')
+              i.mdi.mdi-image-outline
+              span nhà mẫu
+          li
+            a#tien-ich-tab.nav-link(href='#tien-ich', data-toggle='tab')
+              i.mdi.mdi-briefcase-outline
+              span tiện ích
+          li
+            a#thanh-toan-tab.nav-link(href='#thanh-toan', data-toggle='tab')
+              i.mdi.mdi-credit-card
+              span thanh toán
+          li
+            a#tin-tuc-tab.nav-link(href='#tin-tuc', data-toggle='tab')
+              i.mdi.mdi-newspaper
+              span tin tức
+          li
+            a#video-tab.nav-link(href='#video', data-toggle='tab')
+              i.mdi.mdi-video-outline
+              span video
+          li
+            a#hoi-dap-tab.nav-link(href='#hoi-dap', data-toggle='tab')
+              i.mdi.mdi-account-question-outline
+              span hỏi đáp
+
+        .tab-content
+          #tong-quan.box-project-text
+            h3
+              a tổng quan
+            p
+              | Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque cumque provident cum enim labore autem
+              | maiores sequi officiis. At commodi reiciendis, sint quo accusantium iure ipsum itaque exercitationem
+              | explicabo? Quos!
+            p
+              | Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque cumque provident cum enim labore autem
+              | maiores sequi officiis. At commodi reiciendis, sint quo accusantium iure ipsum itaque exercitationem
+              | explicabo? Quos!
+            img(src='../img/project-1.png', alt='')
+          #vi-tri.box-project-text
+            h3
+              a vị trí
+            p
+              | Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque cumque provident cum enim labore autem
+              | maiores sequi officiis. At commodi reiciendis, sint quo accusantium iure ipsum itaque exercitationem
+              | explicabo? Quos!
+            p
+              | Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque cumque provident cum enim labore autem
+              | maiores sequi officiis. At commodi reiciendis, sint quo accusantium iure ipsum itaque exercitationem
+              | explicabo? Quos!
+            p
+              | Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque cumque provident cum enim labore autem
+              | maiores sequi officiis. At commodi reiciendis, sint quo accusantium iure ipsum itaque exercitationem
+              | explicabo? Quos!
+          #mat-bang.box-project-text
+            h3
+              a mặt bằng
+            p
+              | Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque cumque provident cum enim labore autem
+              | maiores sequi officiis. At commodi reiciendis, sint quo accusantium iure ipsum itaque exercitationem
+              | explicabo? Quos!
+            p
+              | Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque cumque provident cum enim labore autem
+              | maiores sequi officiis. At commodi reiciendis, sint quo accusantium iure ipsum itaque exercitationem
+              | explicabo? Quos!
+            p
+              | Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque cumque provident cum enim labore autem
+              | maiores sequi officiis. At commodi reiciendis, sint quo accusantium iure ipsum itaque exercitationem
+              | explicabo? Quos!
+            p
+              | Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque cumque provident cum enim labore autem
+              | maiores sequi officiis. At commodi reiciendis, sint quo accusantium iure ipsum itaque exercitationem
+              | explicabo? Quos!
+          #nha-mau.box-project-text
+            h3
+              a nhà mẫu
+            img(src='../img/project-1.png', alt='')
+            img(src='../img/project-1.png', alt='')
+          #tien-ich.box-project-text
+            h3
+              a tiện ích
+            p
+              | Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque cumque provident cum enim labore autem
+              | maiores sequi officiis. At commodi reiciendis, sint quo accusantium iure ipsum itaque exercitationem
+              | explicabo? Quos!
+            p
+              | Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque cumque provident cum enim labore autem
+              | maiores sequi officiis. At commodi reiciendis, sint quo accusantium iure ipsum itaque exercitationem
+              | explicabo? Quos!
+            p
+              | Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque cumque provident cum enim labore autem
+              | maiores sequi officiis. At commodi reiciendis, sint quo accusantium iure ipsum itaque exercitationem
+              | explicabo? Quos!
+            p
+              | Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque cumque provident cum enim labore autem
+              | maiores sequi officiis. At commodi reiciendis, sint quo accusantium iure ipsum itaque exercitationem
+              | explicabo? Quos!
+          #thanh-toan.box-project-text
+            h3
+              a thanh toán
+            p
+              | Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque cumque provident cum enim labore autem
+              | maiores sequi officiis. At commodi reiciendis, sint quo accusantium iure ipsum itaque exercitationem
+              | explicabo? Quos!
+            p
+              | Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque cumque provident cum enim labore autem
+              | maiores sequi officiis. At commodi reiciendis, sint quo accusantium iure ipsum itaque exercitationem
+              | explicabo? Quos!
+            p
+              | Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque cumque provident cum enim labore autem
+              | maiores sequi officiis. At commodi reiciendis, sint quo accusantium iure ipsum itaque exercitationem
+              | explicabo? Quos!
+            p
+              | Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque cumque provident cum enim labore autem
+              | maiores sequi officiis. At commodi reiciendis, sint quo accusantium iure ipsum itaque exercitationem
+              | explicabo? Quos!
+            p
+              | Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque cumque provident cum enim labore autem
+              | maiores sequi officiis. At commodi reiciendis, sint quo accusantium iure ipsum itaque exercitationem
+              | explicabo? Quos!
+          #tin-tuc.box-project-text
+            h3
+              a tin tức
+            p
+              | Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque cumque provident cum enim labore autem
+              | maiores sequi officiis. At commodi reiciendis, sint quo accusantium iure ipsum itaque exercitationem
+              | explicabo? Quos!
+            p
+              | Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque cumque provident cum enim labore autem
+              | maiores sequi officiis. At commodi reiciendis, sint quo accusantium iure ipsum itaque exercitationem
+              | explicabo? Quos!
+            p
+              | Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque cumque provident cum enim labore autem
+              | maiores sequi officiis. At commodi reiciendis, sint quo accusantium iure ipsum itaque exercitationem
+              | explicabo? Quos!
+            p
+              | Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque cumque provident cum enim labore autem
+              | maiores sequi officiis. At commodi reiciendis, sint quo accusantium iure ipsum itaque exercitationem
+              | explicabo? Quos!
+            p
+              | Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque cumque provident cum enim labore autem
+              | maiores sequi officiis. At commodi reiciendis, sint quo accusantium iure ipsum itaque exercitationem
+              | explicabo? Quos!
+          #video.box-project-text
+            h3
+              a video
+            iframe(src='https://www.youtube.com/embed/Lp0V1sDNNXk', width="100%" height="400" frameborder='0', allow='autoplay; encrypted-media', allowfullscreen='')
+              
+          #hoi-dap.box-project-text
+            h3
+              a hỏi đáp
+            p
+              | Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque cumque provident cum enim labore autem
+              | maiores sequi osfficiis. At commodi reiciendis, sint quo accusantium iure ipsum itaque exercitationem
+              | explicabo? Quos!
+            p
+              | Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque cumque provident cum enim labore autem
+              | maiores sequi officiis. At commodi reiciendis, sint quo accusantium iure ipsum itaque exercitationem
+              | explicabo? Quos!
+            p
+              | Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque cumque provident cum enim labore autem
+              | maiores sequi officiis. At commodi reiciendis, sint quo accusantium iure ipsum itaque exercitationem
+              | explicabo? Quos!
+            p
+              | Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque cumque provident cum enim labore autem
+              | maiores sequi officiis. At commodi reiciendis, sint quo accusantium iure ipsum itaque exercitationem
+              | explicabo? Quos!
+            p
+              | Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque cumque provident cum enim labore autem
+              | maiores sequi officiis. At commodi reiciendis, sint quo accusantium iure ipsum itaque exercitationem
+              | explicabo? Quos!
+            p
+              | Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque cumque provident cum enim labore autem
+              | maiores sequi officiis. At commodi reiciendis, sint quo accusantium iure ipsum itaque exercitationem
+              | explicabo? Quos!
+            p
+              | Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque cumque provident cum enim labore autem
+              | maiores sequi officiis. At commodi reiciendis, sint quo accusantium iure ipsum itaque exercitationem
+              | explicabo? Quos!
