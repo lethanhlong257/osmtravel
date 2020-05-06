@@ -7,29 +7,7 @@
         <div class="main-menu">
             <ul class="nav">
                 <div class="nav-close"><i class="mdi mdi-close d-block d-md-none"></i></div>
-                <li class="nav-item"><a class="nav-link" href="index.html">Trang chủ</a></li>
-                <li class="nav-item"><a class="nav-link" href="ban.html">
-                    Bán<i class="mdi mdi-menu-down"></i></a>
-                    <ul>
-                        <li><a href="ban.html">Căn hộ bán</a></li>
-                        <li><a href="ban.html">Văn phòng bán</a></li>
-                        <li><a href="ban.html">Đất bán</a></li>
-                        <li><a href="ban.html">Căn hộ bán</a></li>
-                        <li><a href="ban.html">Căn hộ bán</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item"><a class="nav-link" href="cho-thue.html">
-                    Cho thuê<i class="mdi mdi-menu-down"></i></a>
-                    <ul>
-                        <li><a href="cho-thue.html">Căn hộ cho thuê</a></li>
-                        <li><a href="cho-thue.html">Siêu thị cho thuê</a></li>
-                        <li><a href="cho-thue.html">Đất cho thuê</a></li>
-                        <li><a href="cho-thue.html">Căn hộ cho thuê</a></li>
-                        <li><a href="cho-thue.html">Căn hộ cho thuê</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item"><a class="nav-link" href="du-an.html">Dự án</a></li>
-                <li class="nav-item"><a class="nav-link" href="tin-tuc.html">News</a></li>
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="dich-vu.html">Services</a></li>
                 <li class="nav-item"><a class="nav-link" href="lien-he.html">Contact</a></li>
             </ul>
