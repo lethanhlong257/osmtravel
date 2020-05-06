@@ -10,15 +10,6 @@
             <form>
                 <input type="text" placeholder="Nhập từ khóa . . ."/>
                 <select>
-                    <option>Bán</option>
-                    <option>Cho thuê</option>
-                </select>
-                <select>
-                    <option>Loại BĐS</option>
-                    <option>Căn hộ cho thuê</option>
-                    <option>Căn hộ bán</option>
-                </select>
-                <select>
                     <option>HCM city</option>
                 </select>
                 <select>
@@ -38,6 +29,12 @@
                     <option>Quận 12</option>
                     <option>Go Vap</option>
                 </select>
+                <button type="submit">Search</button>
+            </form>
+
+            <form class="map-text">
+                <input class="text-special" type="text" placeholder="FROM"/>
+                <input class="text-special" type="text" placeholder="TO"/>
                 <button type="submit">Search</button>
             </form>
         </div>
