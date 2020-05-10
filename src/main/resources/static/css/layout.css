@@ -338,6 +338,7 @@ body .overlay-menu.overlay-in {
 .container {
   width: 100%;
   max-width: 1200px;
+  text-align: center;
 }
 
 .menu {
@@ -618,12 +619,21 @@ body .overlay-menu.overlay-in {
   background: black;
 }
 .search input {
-  width: calc(100% - 12% * 4 - 150px);
+  width: calc(100% - 12% * 4 + 131px);
   border-top-left-radius: 50px;
   border-bottom-left-radius: 50px;
   padding-left: 20px;
 }
-
+.search .map-text{
+  margin-top: 20px;
+  display: inline-block;
+}
+.search .text-special{
+  width: 100%;
+  border-radius: 50px;
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
 .title-page {
   text-align: center;
   margin-bottom: 60px;
@@ -894,13 +904,16 @@ body .overlay-menu.overlay-in {
 }
 .box-rent-price {
   padding: 20px;
-  height: 70px;
+  height: 90px;
 }
 .box-rent-price h3 {
   color: #2EB24C;
   font-weight: 600;
   position: absolute;
   left: 20px;
+}
+.box-rent-price .text-prices{
+  top: 93%;
 }
 .box-rent-price h3 span {
   font-size: 14px;
