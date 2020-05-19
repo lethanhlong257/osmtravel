@@ -1,9 +1,9 @@
 // initialize the map on the "map" div with a given center and zoom
 
 $(document).ready(function () {
-  $.get("/api/get/list/place", function(places, status){
-    drawMap(places)
-  });
+  var host = "localhost:8080"
+  var places = [];
+  drawMap(places);
 
   function drawMap(places) {
     var defaultCoordHCM = [10.7743, 106.6669]; // coord mặc định, chinh giữa HCMC
@@ -16,7 +16,7 @@ $(document).ready(function () {
     }).addTo(map);
 
     places.map(place => {
-      var marker = L.marker([place.latitude_second, place.longtitude_second]).addTo(map);
+      var marker = L.marker([place.lat, place.lon]).addTo(map);
       marker.bindPopup("<b>"+place.name+"</b><br>");
     })
 
@@ -30,4 +30,28 @@ $(document).ready(function () {
       }
     });
   }
+  
+  $("#btn-search-point").onclick(function (e) {
+    alert("abc")
+    var keyword = $('#search-map-key-word').val();
+    if (keyword === "") return false;
+    var endPoint = "/search";
+    var parameter = "?name=" + keyword;
+    var api = host + endPoint + parameter ;
+    $.get(api , function(data, status){
+      var searchList = data.SearchList;
+      searchList.forEach(point => {
+        places.push({
+          name: point.name,
+          lat: point.coordinates[0],
+          lon: point.coordinates[1]
+        })
+      });
+
+      drawMap(places);
+    });
+
+    return false;
+  })
+
 });
