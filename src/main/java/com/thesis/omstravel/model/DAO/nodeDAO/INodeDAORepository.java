@@ -1,7 +1,5 @@
 package com.thesis.omstravel.model.DAO.nodeDAO;
 
-import com.sun.corba.se.impl.orbutil.graph.NodeData;
-import com.thesis.omstravel.controller.node.Node;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;
