@@ -34,9 +34,25 @@ public class SearchController {
 
     @RequestMapping(value = "/api/v1.0/search", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
-    public String search(@RequestParam(value = "name") String name) {
+    public String search(@RequestParam(value = "keyword") String name) {
         //List<Way> listWay = OSMparser.getWay();
         //List<Way> listWay = enhancedWayDAORepository.findAllWays();
+        List<Search> searchResult;
+        String decodedName = null;
+        try {
+            decodedName = URLDecoder.decode(name, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        List<Search> listString = searchService.searchName(listWay);
+        searchResult = searchService.matchName(decodedName, listString);
+        SearchResultResponse searchResultResponse = new SearchResultResponse(searchResult);
+        System.out.println("Search keywork: " + decodedName);
+        return searchResultResponse.toString();
+    }
+
+    @RequestMapping(value = "/search", method = RequestMethod.GET, produces = "application/json")
+    public String searchByName(@RequestParam(value = "keyword") String name) {
         List<Search> searchResult;
         String decodedName = null;
         try {

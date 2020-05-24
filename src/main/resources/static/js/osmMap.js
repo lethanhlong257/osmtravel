@@ -1,9 +1,20 @@
 // initialize the map on the "map" div with a given center and zoom
 
 $(document).ready(function () {
-  var host = "localhost:8080"
+  var host = "localhost:8080";
+  var endpoint = "/api/v1.0/search";
+  var parameter = "?keyword='Nguyen dinh chieu'";
   var places = [];
+  addPlaces(places)
   drawMap(places);
+
+
+  function addPlaces(places) {
+    var url = host + endpoint + parameter;
+   $.get("http://localhost:8080/api/v1.0/search?keyword=nguyen+dinh+chieu", function(data, status) {
+     alert("Data: " + data + "\nStatus: " + status);
+   })
+  }
 
   function drawMap(places) {
     var defaultCoordHCM = [10.7743, 106.6669]; // coord mặc định, chinh giữa HCMC
@@ -19,39 +30,6 @@ $(document).ready(function () {
       var marker = L.marker([place.lat, place.lon]).addTo(map);
       marker.bindPopup("<b>"+place.name+"</b><br>");
     })
-
-    var searchControl = new L.esri.Controls.Geosearch().addTo(map);
-    var results = new L.LayerGroup().addTo(map);
-
-    searchControl.on('results', function(data){
-      results.clearLayers();
-      for (var i = data.results.length - 1; i >= 0; i--) {
-        results.addLayer(L.marker(data.results[i].latlng));
-      }
-    });
   }
-  
-  $("#btn-search-point").onclick(function (e) {
-    alert("abc")
-    var keyword = $('#search-map-key-word').val();
-    if (keyword === "") return false;
-    var endPoint = "/search";
-    var parameter = "?name=" + keyword;
-    var api = host + endPoint + parameter ;
-    $.get(api , function(data, status){
-      var searchList = data.SearchList;
-      searchList.forEach(point => {
-        places.push({
-          name: point.name,
-          lat: point.coordinates[0],
-          lon: point.coordinates[1]
-        })
-      });
-
-      drawMap(places);
-    });
-
-    return false;
-  })
 
 });

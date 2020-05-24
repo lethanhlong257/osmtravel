@@ -7,8 +7,8 @@
     <div class="search">
         <div class="container">
             <h1>SEARCHING TOURISTS DESTINATION!</h1>
-            <form id="form-search-points" action="javascript:void(0)">
-                <input id="search-map-key-word" type="text" placeholder="Nhập từ khóa . . ."/>
+            <form id="form-search-points" action="${pageContext.request.contextPath}/search" method="get">
+                <input id="search-map-key-word" name="keyword" type="text" placeholder="Nhập từ khóa . . ."/>
                 <select>
                     <option>HCM city</option>
                 </select>
@@ -40,3 +40,5 @@
         </div>
     </div>
 </section>
+<script>
+</script>
