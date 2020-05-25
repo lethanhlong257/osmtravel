@@ -1,9 +1,6 @@
 // initialize the map on the "map" div with a given center and zoom
-
 $(document).ready(function () {
-  var host = "localhost:8080";
-
-  var parameter = "?keyword='Nguyen dinh chieu'";
+  var host = "http://www.localhost:8080";
   var places = [];
   var currenntURL = window.location.href;
 
@@ -12,8 +9,21 @@ $(document).ready(function () {
     var searchParams = getUrlParameter("keyword");
     var searchAPI = host + searchEndPoint + "?keyword=" + encodeURI(searchParams);
     $.get(searchAPI, function (searchResult, status) {
-      let searchList = searchResult.searchList;
-      
+      if (status === "success") {
+        let searchList = searchResult.SearchList;
+        for (let i = 0; i < searchList.length; i ++) {
+          let result = searchList[i];
+          let point = {
+            name: result.name,
+            lon: result.coordinates[0],
+            lat: result.coordinates[1]
+          }
+          places.push(point)
+        }
+        drawMap(places);
+      } else {
+        drawMap(places);
+      }
     })
   } else {
     drawMap(places);
@@ -45,6 +55,7 @@ function drawMap(places) {
   L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
     attribution: '© <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(map);
+
 
   places.map(place => {
     var marker = L.marker([place.lat, place.lon]).addTo(map);
