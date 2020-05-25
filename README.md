@@ -42,3 +42,14 @@ trả về danh sách các địa diểm map với dạng JSON
 _Hiện tại chỉ mới làm dạng API chưa có giao diện cho chức năng search_
 
 Chức năng dự kiến: Sau khi input địa diểm vào khung search tại homepage bấm nút search thì sẽ gọi ajax để gọi api search và trả về danh sách các địa diểm dựa theo keyword
+
+### 23/05/2020 - Report
+Chức năng search:
+Gõ keyword vào khung search có id #search-map-key-word
+chủ yếu tìm đường
+Ví dụ: Trần Hưng Đạo hoặc chợ bén thành
+kết quả: trên bản đồ hiện ra các điểm kết quả search.
+Phía dưới bản đồ hiện ra list các địa diểm và toạ độ.
+Tuỳ chỉnh lại list cho đẹp
+Next step: Click vào địa điểm trên bản đồ (hoặc list địa diểm bên dưới) sẽ hiển thị trang chi tiết địa diểm.
+
