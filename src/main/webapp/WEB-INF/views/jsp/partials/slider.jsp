@@ -11,7 +11,7 @@
                 <input id="search-map-key-word" name="keyword" type="text" placeholder="Nhập từ khóa . . ."/>
                 <select>
                     <option>HCM city</option>
-                </select>
+                </select>q
                 <select>
                     <option>District</option>
                     <option>Tan Binh</option>
