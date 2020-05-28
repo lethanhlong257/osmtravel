@@ -36,9 +36,9 @@ public class SearchController {
 
     List<Way> listWay = OSMparser.getWay();
 //    List<NodeT> listNode = OSMparser.getNode();
-    List<Relation> listRelation = OSMparser.getRelation();
+    //List<Relation> listRelation = OSMparser.getRelation();
 //
-    List<NodeT> listRoutableNode = OSMparser.getRoutableNode(listWay, listRelation);
+    //List<NodeT> listRoutableNode = OSMparser.getRoutableNode(listWay, listRelation);
 
     @RequestMapping(value = "/api/v1.0/search", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
@@ -59,7 +59,7 @@ public class SearchController {
         return searchResultResponse.toString();
     }
 
-    @RequestMapping(value = "/search", method = RequestMethod.GET, produces = "application/json")
+    /*@RequestMapping(value = "/search", method = RequestMethod.GET, produces = "application/json")
     public String searchByName(@RequestParam(value = "keyword") String name) {
         List<Search> searchResult;
         String decodedName = null;
@@ -73,7 +73,7 @@ public class SearchController {
         SearchResultResponse searchResultResponse = new SearchResultResponse(searchResult);
         System.out.println("Search keywork: " + decodedName);
         return searchResultResponse.toString();
-    }
+    }*/
 
     @RequestMapping(value = "/api/v1.0/get/all/way", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
@@ -89,7 +89,7 @@ public class SearchController {
      * http://localhost:8080/routing?route=10.780698,106.6807187;10.7652623,106.6827139
      *
      **/
-    @RequestMapping(value = "/routing", method = RequestMethod.GET, headers = "Accept=application/json;charset=UTF-8")
+    /*@RequestMapping(value = "/routing", method = RequestMethod.GET, headers = "Accept=application/json;charset=UTF-8")
     public String routing(@RequestParam(value = "route") String route) {
 
         String decodeRoute = null;
@@ -119,6 +119,6 @@ public class SearchController {
         RoutingResponse response = new RoutingResponse(routingResult);
 
         return response.toString();
-    }
+    }*/
 
 }

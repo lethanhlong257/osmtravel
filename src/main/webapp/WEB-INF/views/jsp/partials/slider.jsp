@@ -11,7 +11,7 @@
                 <input id="search-map-key-word" name="keyword" type="text" placeholder="Nhập từ khóa . . ."/>
                 <select>
                     <option>HCM city</option>
-                </select>q
+                </select>
                 <select>
                     <option>District</option>
                     <option>Tan Binh</option>
@@ -30,6 +30,11 @@
                     <option>Go Vap</option>
                 </select>
                 <button id="btn-search-point" >Search</button>
+            </form>
+            <br>
+            <form id="form-advanced-search" action="/advanced/search" method="get">
+                <input id="input-advanced-search" name="keyword" type="text" placeholder="Nhập từ khóa . . ."/>
+                <button id="button-advanced-search" type="button" >Advanced Search</button>
             </form>
 
             <form class="map-text">

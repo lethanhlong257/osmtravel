@@ -38,4 +38,9 @@ public class RoutingController {
         model.addAttribute("listPoints", searchResult);
         return "home";
     }
+
+    @RequestMapping(value = "/advanced/search", method = RequestMethod.GET)
+    public String advancedSearch(@RequestParam(value = "keyword") String keyword) {
+        return "home";
+    }
 }
