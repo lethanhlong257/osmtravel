@@ -8,7 +8,7 @@ const hostingGeoCodingAPI = "https://maps.googleapis.com/maps/api/geocode/json"
 
 // Account lethanhlong257 - need to change before submit code and defend
 // Becareful to use because it is limited for request
-const GOOGLE_MAP_API_KEY = "AIzaSyAi0Yb8-l2pZVk2MOo8U2p26q2y9PcaS4k";
+const GOOGLE_MAP_API_KEY = "AIzaSyAi0Yb8-l2pZVk2MOo8U2p26q2y9PcaS4k.r3m0v3";
 
 
 let defaultCoordHCM = [10.7743, 106.6669]; // coord mặc định, chinh giữa HCMC
@@ -87,7 +87,8 @@ function drawMap(places) {
 
 function searchByGoogleGeocoding(keyword) {
   const urlEncodeKeyword = encodeURI(keyword)
-  const geocodingAPI = hostingGeoCodingAPI + `?key=${GOOGLE_MAP_API_KEY}` + `&address=${urlEncodeKeyword}`
+  const key = formatMapAPIKey(GOOGLE_MAP_API_KEY)
+  const geocodingAPI = hostingGeoCodingAPI + `?key=${key}` + `&address=${urlEncodeKeyword}`
   console.log(geocodingAPI)
   $.get(geocodingAPI, function (data, status) {
     if (status === SUCCESS_STATUS) {
@@ -120,4 +121,9 @@ function searchByGoogleGeocoding(keyword) {
       drawMap(places)
     }
   })
+}
+
+// bởi vì uplen git là public Repository nên key cần chỉnh sửa xíu để tránh bị người khác dùng tool trộm xài
+function formatMapAPIKey(api) {
+  return GOOGLE_MAP_API_KEY.split(".")[0]
 }
