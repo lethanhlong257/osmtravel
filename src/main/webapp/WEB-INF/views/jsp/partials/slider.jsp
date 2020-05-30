@@ -32,9 +32,9 @@
                 <button id="btn-search-point" >Search</button>
             </form>
             <br>
-            <form id="form-advanced-search" action="/advanced/search" method="get">
+            <form id="form-advanced-search" action="javascript:void(0)" method="get">
                 <input id="input-advanced-search" name="keyword" type="text" placeholder="Nhập từ khóa . . ."/>
-                <button id="button-advanced-search" type="button" >Advanced Search</button>
+                <input id="button-advanced-search" type="submit" value="Advanced Search" />
             </form>
 
             <form class="map-text">

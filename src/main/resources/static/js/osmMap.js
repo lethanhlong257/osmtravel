@@ -14,8 +14,8 @@ const GOOGLE_MAP_API_KEY = "AIzaSyAi0Yb8-l2pZVk2MOo8U2p26q2y9PcaS4k.r3m0v3";
 let defaultCoordHCM = [10.7743, 106.6669]; // coord mặc định, chinh giữa HCMC
 let zoomLevel = 13;
 let mapIdContainer = 'map'
-let map = L.map(mapIdContainer, {attributionControl: false}).setView(defaultCoordHCM, zoomLevel);
-
+let map = L.map(mapIdContainer, {attributionControl: false})
+let marker;
 
 
 
@@ -46,7 +46,7 @@ $(document).ready(function () {
     drawMap(places);
   }
 
-  $("#button-advanced-search").click(function (event) {
+  $("#form-advanced-search").submit(function (event) {
     event.preventDefault()
     const advancedSearchKeyword = $("#input-advanced-search").val()
     console.log(advancedSearchKeyword)
@@ -54,7 +54,11 @@ $(document).ready(function () {
       alert("Search input is empty")
       return false
     }
-    searchByGoogleGeocoding(advancedSearchKeyword)
+    searchByGoogleGeocoding(advancedSearchKeyword, function (result) {
+      places = result
+      console.log(places)
+      drawMap(places)
+    })
   })
 
 });
@@ -75,51 +79,72 @@ function getUrlParameter(sParam) {
 }
 
 function drawMap(places) {
+  marker = null
+  map.setView(defaultCoordHCM, zoomLevel)
   L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
     attribution: '© <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(map);
 
+
   places.map(place => {
-    let marker = L.marker([place.lat, place.lon]).addTo(map);
+    marker = L.marker([place.lat, place.lon]).addTo(map);
     marker.bindPopup("<b>"+place.name+"</b><br>");
   })
 }
 
-function searchByGoogleGeocoding(keyword) {
+function searchByGoogleGeocoding(keyword, callback) {
+  const searchPlace = []
   const urlEncodeKeyword = encodeURI(keyword)
   const key = formatMapAPIKey(GOOGLE_MAP_API_KEY)
   const geocodingAPI = hostingGeoCodingAPI + `?key=${key}` + `&address=${urlEncodeKeyword}`
-  console.log(geocodingAPI)
   $.get(geocodingAPI, function (data, status) {
-    if (status === SUCCESS_STATUS) {
-      if (data.status !== OK_STATUS) {
-        console.log("Error 01 call searchByGoogleGeocoding: " + status)
-        console.log(data)
-        alert(`No result with keyword ${keyword}. Please search again`)
-        return false
-      }
-      let searchResult = data.results
-      if (searchResult.length > 0) {
-        places = []
-      }
-      for (let i = 0; i < searchResult.length; i++) {
-        let result = searchResult[i]
-        let formattedAddress = result.formatted_address
-        let point = {
-          "address": formattedAddress,
-          "lat": result.geometry.location.lat,
-          "lon": result.geometry.location.lng,
-          "name": result.address_components[0].long_name
-        }
-        places.push(point)
-      }
-      console.log(places)
-      drawMap(places)
-    } else {
+    if (status !== SUCCESS_STATUS) {
       console.log("Error 02 call searchByGoogleGeocoding: " + status)
-      console.log(data)
-      drawMap(places)
+      callback(searchPlace)
     }
+    if (data.status !== OK_STATUS) {
+      console.log("Error 01 call searchByGoogleGeocoding: " + status)
+      console.log(data)
+      alert(`No result with keyword ${keyword}. Please search again`)
+      callback(searchPlace)
+    }
+
+    let searchResult = data.results
+    searchResult.forEach(result => {
+      let point = {
+        "address": result.formatted_address,
+        "lat": result.geometry.location.lat,
+        "lon": result.geometry.location.lng,
+        "name": keyword + " - " +result.address_components[0].long_name
+      }
+      searchPlace.push(point)
+    })
+    callback(searchPlace)
+
+    // if (status === SUCCESS_STATUS) {
+    //   if (data.status !== OK_STATUS) {
+    //     console.log("Error 01 call searchByGoogleGeocoding: " + status)
+    //     console.log(data)
+    //     alert(`No result with keyword ${keyword}. Please search again`)
+    //     return false
+    //   }
+    //   let searchResult = data.results
+    //   for (let i = 0; i < searchResult.length; i++) {
+    //     let result = searchResult[i]
+    //     let formattedAddress = result.formatted_address
+    //     let point = {
+    //       "address": formattedAddress,
+    //       "lat": result.geometry.location.lat,
+    //       "lon": result.geometry.location.lng,
+    //       "name": keyword + " - " +result.address_components[0].long_name
+    //     }
+    //     searchPlace.push(point)
+    //   }
+    //   return searchPlace
+    // } else {
+    //   console.log("Error 02 call searchByGoogleGeocoding: " + status)
+    //   return searchPlace
+    // }
   })
 }
 
