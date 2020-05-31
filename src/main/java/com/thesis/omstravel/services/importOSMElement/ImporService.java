@@ -1,5 +1,7 @@
 package com.thesis.omstravel.services.importOSMElement;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.thesis.omstravel.model.*;
 import com.thesis.omstravel.model.DAO.nodeDAO.INodeDAORepository;
 import com.thesis.omstravel.model.DAO.nodeDAO.NodeDAO;
@@ -36,11 +38,18 @@ public class ImporService implements IImporService {
         int i = 0;
         for (NodeT node : listNode) {
             i++;
+            ObjectMapper objectMapper = new ObjectMapper();
+            String jsonTag = "";
+            try {
+                jsonTag = objectMapper.writeValueAsString(node.getTags());
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            }
             nodeDAO.setId(node.getId().substring(1));
             nodeDAO.setLat(String.valueOf(node.getLat()));
             nodeDAO.setLon(String.valueOf(node.getLon()));
             nodeDAO.setType("node");
-            nodeDAO.setTags(node.getTags().toString());
+            nodeDAO.setTags(jsonTag);
 
             NodeDAO nodeDAO1 = nodeDAORepository.insert(nodeDAO);
             System.out.println(i + " import " + nodeDAO1.toString() + "successfully ");

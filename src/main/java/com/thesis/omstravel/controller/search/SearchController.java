@@ -35,16 +35,16 @@ public class SearchController {
     IEnhancedWayDAORepository enhancedWayDAORepository;
 
     List<Way> listWay = OSMparser.getWay();
-//    List<NodeT> listNode = OSMparser.getNode();
+    //List<NodeT> listNode = OSMparser.getNode();
     //List<Relation> listRelation = OSMparser.getRelation();
-//
-    //List<NodeT> listRoutableNode = OSMparser.getRoutableNode(listWay, listRelation);
+    //List <NodeT> listRoutableNode = OSMparser.getRoutableNode(listWay, listRelation);
 
     @RequestMapping(value = "/api/v1.0/search", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
     public String search(@RequestParam(value = "keyword") String name) {
-        //List<Way> listWay = OSMparser.getWay();
-        //List<Way> listWay = enhancedWayDAORepository.findAllWays();
+//        listRoutableNode.forEach(node -> {
+//            System.out.println(node.toString());
+//        });
         List<Search> searchResult;
         String decodedName = null;
         try {
