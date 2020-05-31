@@ -8,6 +8,9 @@ import java.util.List;
 
 public interface IImporService {
     void importNode(List<NodeT> nodes);
+
+    void importRoutableNode(List<NodeT> routableNodes);
+
     void importWay(List<Way> listWay);
     void importRelation(List<Relation> relationList);
 }

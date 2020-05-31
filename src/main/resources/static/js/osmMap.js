@@ -5,6 +5,7 @@ const OK_STATUS = "OK"
 let places = [];
 let currenntURL = window.location.href;
 const hostingGeoCodingAPI = "https://maps.googleapis.com/maps/api/geocode/json"
+let isRouting = false
 
 // Account lethanhlong257 - need to change before submit code and defend
 // Becareful to use because it is limited for request
@@ -37,13 +38,23 @@ $(document).ready(function () {
           }
           places.push(point)
         }
-        drawMap(places);
+        drawMap(places, []);
       } else {
-        drawMap(places);
+        drawMap(places, []);
       }
     })
-  } else {
-    drawMap(places);
+  }
+  else if (currenntURL.indexOf("/routing") > -1) {
+    let from = decodeURI(getUrlParameter("from"))
+    let to = decodeURI(getUrlParameter("to"))
+    if (from === "" || to === "") {
+      alert("From and To cannot be empty")
+      return
+    }
+    routingNodes(from, to)
+  }
+  else {
+    drawMap(places, []);
   }
 
   $("#form-advanced-search").submit(function (event) {
@@ -57,7 +68,7 @@ $(document).ready(function () {
     searchByGoogleGeocoding(advancedSearchKeyword, function (result) {
       places = result
       console.log(places)
-      drawMap(places)
+      drawMap(places, [])
     })
   })
 
@@ -78,13 +89,19 @@ function getUrlParameter(sParam) {
   }
 }
 
-function drawMap(places) {
+function drawMap(places, latlngs) {
   marker = null
   map.setView(defaultCoordHCM, zoomLevel)
   L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
     attribution: '© <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(map);
 
+  if (isRouting === true) {
+    // create a red polyline from an array of LatLng points
+    let polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
+    // zoom the map to the polyline
+    map.fitBounds(polyline.getBounds());
+  }
 
   places.map(place => {
     marker = L.marker([place.lat, place.lon]).addTo(map);
@@ -121,34 +138,38 @@ function searchByGoogleGeocoding(keyword, callback) {
     })
     callback(searchPlace)
 
-    // if (status === SUCCESS_STATUS) {
-    //   if (data.status !== OK_STATUS) {
-    //     console.log("Error 01 call searchByGoogleGeocoding: " + status)
-    //     console.log(data)
-    //     alert(`No result with keyword ${keyword}. Please search again`)
-    //     return false
-    //   }
-    //   let searchResult = data.results
-    //   for (let i = 0; i < searchResult.length; i++) {
-    //     let result = searchResult[i]
-    //     let formattedAddress = result.formatted_address
-    //     let point = {
-    //       "address": formattedAddress,
-    //       "lat": result.geometry.location.lat,
-    //       "lon": result.geometry.location.lng,
-    //       "name": keyword + " - " +result.address_components[0].long_name
-    //     }
-    //     searchPlace.push(point)
-    //   }
-    //   return searchPlace
-    // } else {
-    //   console.log("Error 02 call searchByGoogleGeocoding: " + status)
-    //   return searchPlace
-    // }
   })
 }
 
-// bởi vì uplen git là public Repository nên key cần chỉnh sửa xíu để tránh bị người khác dùng tool trộm xài
+// bởi vì up len git là public Repository nên key cần chỉnh sửa xíu để tránh bị người khác dùng tool trộm xài
 function formatMapAPIKey(api) {
-  return GOOGLE_MAP_API_KEY.split(".")[0]
+  return api.split(".")[0]
+}
+
+function routingNodes(from, to) {
+  searchByGoogleGeocoding(from, function (fromResult) {
+    searchByGoogleGeocoding(to, function (toResult) {
+      if (fromResult.length !== 1) {
+        alert("Cannot detect From address, Please choose another")
+        return false
+      }
+      if (toResult.length !== 1) {
+        alert("Cannot detect From address, Please choose another")
+        return false
+      }
+      let fromObj = fromResult[0]
+      let toObj = toResult[0]
+      const routingEndPoint = "/api/v1.0/routing"
+      const routingParam = `?route=${fromObj.lat},${fromObj.lon};${toObj.lat},${toObj.lon}`
+      let routingAPI = host + routingEndPoint + routingParam;
+      console.log(routingAPI)
+      $.get(routingAPI, function (routingResult, status) {
+        let coordinates = routingResult.geometry.coordinates
+        if (status === SUCCESS_STATUS) {
+          isRouting = true
+          drawMap(places, coordinates)
+        }
+      })
+    })
+  })
 }

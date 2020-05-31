@@ -37,10 +37,10 @@
                 <input id="button-advanced-search" type="submit" value="Advanced Search" />
             </form>
 
-            <form class="map-text">
-                <input class="text-special" type="text" placeholder="FROM"/>
-                <input class="text-special" type="text" placeholder="TO"/>
-                <button  type="submit">Search</button>
+            <form class="map-text" id="form-routing" action="/routing" method="get">
+                <input name="from" id="input-routing-from" class="text-special" type="text" placeholder="FROM"/>
+                <input name="to" id="input-routing-to" class="text-special" type="text" placeholder="TO"/>
+                <input id="input-routing-submit-button"  type="submit" value="Chỉ Đường" />
             </form>
         </div>
     </div>

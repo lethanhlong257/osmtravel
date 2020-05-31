@@ -32,7 +32,6 @@ public class WayDAO2Way {
         List<NodeT> nodeTList = null;
         try {
             JSONArray nodesJsonArray = (JSONArray) jsonParser.parse(wayDAO.getNodes());
-            //JSONObject tagJSON = (JSONObject) jsonParser.parse(tagsString);
             String tagsString = wayDAO.getTags();
             if (!tagsString.equals("{}")) {
                 String[] tags = tagsString.split(",");

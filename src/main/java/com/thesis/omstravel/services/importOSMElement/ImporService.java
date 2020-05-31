@@ -4,7 +4,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.thesis.omstravel.model.*;
 import com.thesis.omstravel.model.DAO.nodeDAO.INodeDAORepository;
+import com.thesis.omstravel.model.DAO.nodeDAO.INodeRoutableDAORepository;
 import com.thesis.omstravel.model.DAO.nodeDAO.NodeDAO;
+import com.thesis.omstravel.model.DAO.nodeDAO.NodeRoutableDAO;
 import com.thesis.omstravel.model.DAO.relationDAO.IRelationDAORepository;
 import com.thesis.omstravel.model.DAO.relationDAO.RelationDAO;
 import com.thesis.omstravel.model.DAO.wayDAO.IWayDAORepository;
@@ -16,12 +18,16 @@ import org.json.simple.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Component
 public class ImporService implements IImporService {
 
     @Autowired
     INodeDAORepository nodeDAORepository;
+
+    @Autowired
+    INodeRoutableDAORepository nodeRoutableDAORepository;
 
     @Autowired
     IWayDAORepository wayDAORepository;
@@ -38,21 +44,31 @@ public class ImporService implements IImporService {
         int i = 0;
         for (NodeT node : listNode) {
             i++;
-            ObjectMapper objectMapper = new ObjectMapper();
-            String jsonTag = "";
-            try {
-                jsonTag = objectMapper.writeValueAsString(node.getTags());
-            } catch (JsonProcessingException e) {
-                e.printStackTrace();
-            }
             nodeDAO.setId(node.getId().substring(1));
             nodeDAO.setLat(String.valueOf(node.getLat()));
             nodeDAO.setLon(String.valueOf(node.getLon()));
             nodeDAO.setType("node");
-            nodeDAO.setTags(jsonTag);
+            nodeDAO.setTags(buildJsonTag(node.getTags()));
 
             NodeDAO nodeDAO1 = nodeDAORepository.insert(nodeDAO);
             System.out.println(i + " import " + nodeDAO1.toString() + "successfully ");
+        }
+    }
+
+    @Override
+    public void importRoutableNode(List<NodeT> routableNodes) {
+        NodeRoutableDAO nodeRoutableDAO = new NodeRoutableDAO();
+        int i = 0;
+        for (NodeT node : routableNodes) {
+            i++;
+            nodeRoutableDAO.setId(node.getId().substring(1));
+            nodeRoutableDAO.setLat(String.valueOf(node.getLat()));
+            nodeRoutableDAO.setLon(String.valueOf(node.getLon()));
+            nodeRoutableDAO.setType("node");
+            nodeRoutableDAO.setTags(buildJsonTag(node.getTags()));
+
+            NodeRoutableDAO nodeRoutableDAO1 = nodeRoutableDAORepository.insert(nodeRoutableDAO);
+            System.out.println(i + " import " + nodeRoutableDAO1.toString() + "successfully ");
         }
     }
 
@@ -64,9 +80,8 @@ public class ImporService implements IImporService {
             i++;
             wayDAO.setId(way.getId().substring(1));
             wayDAO.setType("way");
-            wayDAO.setTags(String.valueOf(way.getTags()));
+            wayDAO.setTags(buildJsonTag(way.getTags()));
             wayDAO.setNodes(buildNodesListJSONString(way.getNodes()));
-
             WayDAO wayDAOResult = wayDAORepository.insert(wayDAO);
             System.out.println(i + " import way " + wayDAOResult.toString());
         }
@@ -85,13 +100,24 @@ public class ImporService implements IImporService {
         for (Relation relation : relationList) {
             i++;
             relationDAO.setId(relation.getId().substring(1));
-            relationDAO.setTags(relation.getTags().toString());
+            relationDAO.setTags(buildJsonTag(relation.getTags()));
             relationDAO.setType("relation");
             relationDAO.setMembers(buildMemberJSON(relation));
 
             RelationDAO relationDAOResult = relationDAORepository.insert(relationDAO);
-            System.out.println(i + " import relation " + relationDAO.toString());
+            System.out.println(i + " import relation " + relationDAOResult.toString());
         }
+    }
+
+    public String buildJsonTag(Map tags) {
+        String jsonTag = "";
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            jsonTag = objectMapper.writeValueAsString(tags);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return jsonTag;
     }
 
     public String buildMemberJSON(Relation relation) {

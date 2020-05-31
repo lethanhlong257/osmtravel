@@ -19,8 +19,8 @@ public class RoutingResponse {
         JSONArray coordinates = new JSONArray();
         for (int i = 0; i < shortestPath.size(); i++) {
             // In GeoJSON format, in coordinate, long is before lat
-            JSONArray coord = new JSONArray("[" + shortestPath.get(i).getLon()
-                    + "," + shortestPath.get(i).getLat() + "]");
+            JSONArray coord = new JSONArray("[" + shortestPath.get(i).getLat()
+                    + "," + shortestPath.get(i).getLon() + "]");
             coordinates.put(coord);
         }
         geometry.put("coordinates", coordinates);

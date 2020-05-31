@@ -19,8 +19,12 @@ public class ImportNodeToMongoController {
     @RequestMapping(value = "/api/v1.0/import/node", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
     public String importNodesToMongo() {
+        List<Way> listWay = OSMparser.getWay();
+        List<Relation> listRelation = OSMparser.getRelation();
+        List <NodeT> listRoutableNode = OSMparser.getRoutableNode(listWay, listRelation);
         List<NodeT> listNode = OSMparser.getNode();
         importService.importNode(listNode);
+        importService.importRoutableNode(listRoutableNode);
 
         return "import done";
     }
