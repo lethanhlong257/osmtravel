@@ -4,7 +4,7 @@
 <%@ page import="models.Place" %>
 <div class="main-panel">
     <!-- Navbar -->
-    <jsp:include page="/admin/adminPartials/navbar.jsp" />
+    <jsp:include page="navbar.jsp" />
     <!-- End Navbar -->
     <div class="content">
         <div class="container-fluid">

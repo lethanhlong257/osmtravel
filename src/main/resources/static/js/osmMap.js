@@ -167,6 +167,18 @@ function routingNodes(from, to) {
         let coordinates = routingResult.geometry.coordinates
         if (status === SUCCESS_STATUS) {
           isRouting = true
+          places.push({
+            "address": fromObj.address,
+            "lat": fromObj.lat,
+            "lon": fromObj.lon,
+            "name": fromObj.name
+          })
+          places.push({
+            "address": toObj.address,
+            "lat": toObj.lat,
+            "lon": toObj.lon,
+            "name": toObj.name
+          })
           drawMap(places, coordinates)
         }
       })

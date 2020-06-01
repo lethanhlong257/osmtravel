@@ -7,20 +7,20 @@
         place list management
     </title>
 
-    <jsp:include page="/admin/adminPartials/adminHead.jsp" />
+    <jsp:include page="views/adminPartials/adminHead.jsp" />
 </head>
 
 <body class="">
 <div class="wrapper ">
-    <jsp:include page="/admin/adminPartials/slidebar.jsp" />
-    <jsp:include page="/admin/adminPartials/PlaceListMainPanel.jsp" />
+    <jsp:include page="views/adminPartials/slidebar.jsp" />
+    <jsp:include page="views/adminPartials/PlaceListMainPanel.jsp" />
 
 </div>
 <div class="fixed-plugin">
 
 </div>
-<jsp:include page="/admin/adminPartials/coreJSFiles.jsp" />
-<script src="/admin/assets/js/customs.js"></script>
+<jsp:include page="views/adminPartials/coreJSFiles.jsp" />
+<script src="/admin_staic/assets/js/customs.js"></script>
 
 <script>
   $(document).ready(function() {

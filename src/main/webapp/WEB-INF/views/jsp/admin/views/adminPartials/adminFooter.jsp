@@ -34,3 +34,5 @@
         </div>
     </div>
 </footer>
+
+<script src="/admin_staic/assets/js/admin.js"></script>

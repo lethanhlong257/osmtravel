@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div class="main-panel">
     <!-- Navbar -->
-    <jsp:include page="/admin/adminPartials/navbar.jsp" />
+    <jsp:include page="navbar.jsp" />
     <!-- End Navbar -->
     <div class="content">
         <div class="container-fluid">
@@ -419,5 +419,5 @@
         </div>
     </div>
 
-    <jsp:include page="/admin/adminPartials/adminFooter.jsp" />
+    <jsp:include page="adminFooter.jsp" />
 </div>

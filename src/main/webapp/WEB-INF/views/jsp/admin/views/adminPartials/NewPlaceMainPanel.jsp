@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div class="main-panel">
     <!-- Navbar -->
-    <jsp:include page="/admin/adminPartials/navbar.jsp" />
+    <jsp:include page="navbar.jsp" />
     <!-- End Navbar -->
     <div class="content">
         <div class="container-fluid">
@@ -30,26 +30,38 @@
                         <div class="card-header card-header-primary">
                             <h4 class="card-title">Add new place to map</h4>
                             <p class="card-category">Latitude and longtitude should be in second exactly</p>
+                            <p class="card-category">Using Quick add to find the location quickly</p>
                         </div>
                         <div class="card-body">
-                            <form action="/create-new-place" method="post">
+                            <form id="form-quick-add">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="input-quickadd" placeholder="Address or Name of your location" name="name" required>
+                                            <input type="submit" value="Quick check" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <hr />
+                            <form action="/place/add" method="post">
                                 <div class="row">
                                     <div class="col-md-5">
                                         <div class="form-group">
                                             <label class="bmd-label-floating">Location name</label>
-                                            <input type="text" class="form-control" name="name" required>
+                                            <input id="input-place-name" type="text" class="form-control" name="name" required>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label class="bmd-label-floating">Latitude in second</label>
-                                            <input type="text" class="form-control" name="latitude" required>
+                                            <input id="input-place-lat" type="text" class="form-control" name="latitude" required>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label class="bmd-label-floating">Longtitude in second</label>
-                                            <input type="text" class="form-control" name="longtitude" required>
+                                            <input id="input-place-lon" type="text" class="form-control" name="longtitude" required>
                                         </div>
                                     </div>
                                 </div>
@@ -58,25 +70,25 @@
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label class="bmd-label-floating">Country</label>
-                                            <input type="text" class="form-control" name="country" required>
+                                            <input id="input-place-country" type="text" class="form-control" name="country" required>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label class="bmd-label-floating">City</label>
-                                            <input type="text" class="form-control" name="city" required>
+                                            <input id="input-place-city" type="text" class="form-control" name="city" required>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label class="bmd-label-floating">ward</label>
-                                            <input type="text" class="form-control" name="ward" required>
+                                            <input id="input-place-ward" type="text" class="form-control" name="ward" required>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label class="bmd-label-floating">District</label>
-                                            <input type="text" class="form-control" name="district" required>
+                                            <input id="input-place-district" type="text" class="form-control" name="district" required>
                                         </div>
                                     </div>
                                 </div>
@@ -85,28 +97,28 @@
                                     <div class="col-md-9">
                                         <div class="form-group">
                                             <label class="bmd-label-floating">Street</label>
-                                            <input type="text" class="form-control" name="street" required>
+                                            <input id="input-place-street" type="text" class="form-control" name="street" required>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label class="bmd-label-floating">Postal Code</label>
-                                            <input type="text" class="form-control" name="zipCode">
+                                            <input id="input-place-zipcode" type="text" class="form-control" name="zipCode">
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Upload Image</label>
-                                            <input type="file" id="myFile" name="filename" />
+                                            <input class="input-upload-img" accept="image/png, image/jpeg" type="file" id="myFile" name="filename" />
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Phone number</label>
-                                            <input class="form-control" type="text" name="phone" />
+                                            <input id="input-place-phone" class="form-control" type="text" name="phone" />
                                         </div>
                                     </div>
                                 </div>

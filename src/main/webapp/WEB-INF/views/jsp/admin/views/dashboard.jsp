@@ -4,22 +4,22 @@
 
 <head>
     <title>
-        Material Dashboard by Creative Tim
+        Material Dashboard
     </title>
 
-    <jsp:include page="/admin/adminPartials/adminHead.jsp" />
+    <jsp:include page="adminPartials/adminHead.jsp" />
 </head>
 
 <body class="">
 <div class="wrapper ">
-    <jsp:include page="/admin/adminPartials/slidebar.jsp" />
-    <jsp:include page="/admin/adminPartials/mainPanel.jsp" />
+    <jsp:include page="adminPartials/slidebar.jsp" />
+    <jsp:include page="adminPartials/mainPanel.jsp" />
 </div>
 <div class="fixed-plugin">
 
 </div>
-<jsp:include page="/admin/adminPartials/coreJSFiles.jsp" />
-<script src="/admin/assets/js/customs.js"></script>
+<jsp:include page="adminPartials/coreJSFiles.jsp" />
+<script src="/admin_staic/assets/js/customs.js"></script>
 
 <script>
   $(document).ready(function() {
