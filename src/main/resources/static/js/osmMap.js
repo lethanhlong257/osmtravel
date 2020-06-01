@@ -179,6 +179,8 @@ function routingNodes(from, to) {
             "lon": toObj.lon,
             "name": toObj.name
           })
+          $('#alert-shortest-path').html(`Khoảng cách: ${routingResult.distance}`)
+          $('#alert-from-to').html(`From: <b>${decodeURI(from)}</b> - To: <b>${decodeURI(to)}</b>`)
           drawMap(places, coordinates)
         }
       })

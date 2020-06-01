@@ -1,6 +1,9 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 
 <div class="container">
+    <span id="alert-from-to" class="alert-shortest-path"></span>
+    <br/>
+    <span id="alert-shortest-path" class="alert-shortest-path"></span>
     <div id="map"></div>
     <c:if test="${listPoints != null}">
         <div class="search-list-point">
