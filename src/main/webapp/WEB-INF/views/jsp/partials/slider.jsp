@@ -32,7 +32,7 @@
                 <button id="btn-search-point" >Search</button>
             </form>
             <br>
-            <form id="form-advanced-search" action="javascript:void(0)" method="get">
+            <form id="form-advanced-search" action="/search/advanced" method="get">
                 <input id="input-advanced-search" name="keyword" type="text" placeholder="Nhập từ khóa . . ."/>
                 <input id="button-advanced-search" type="submit" value="Advanced Search" />
             </form>

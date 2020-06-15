@@ -16,6 +16,7 @@ $(document).ready(function () {
       $("#input-place-street").val(place.address)
       $("#input-place-country").val(addressObj.country)
       $("#input-place-city").val(addressObj.city)
+      $("#input-place-name").focus()
 
     })
   })

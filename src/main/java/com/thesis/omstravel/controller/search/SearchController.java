@@ -36,7 +36,7 @@ public class SearchController {
     List<Way> listWay = OSMparser.getWay();
     //List<NodeT> listNode = OSMparser.getNode();
     List<Relation> listRelation = OSMparser.getRelation();
-    List <NodeT> listRoutableNode = OSMparser.getRoutableNode(listWay, listRelation);
+    //List <NodeT> listRoutableNode = OSMparser.getRoutableNode(listWay, listRelation);
 
     @RequestMapping(value = "/api/v1.0/search", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
@@ -88,36 +88,36 @@ public class SearchController {
      * http://localhost:8080/routing?route=10.780698,106.6807187;10.7652623,106.6827139
      *
      **/
-    @RequestMapping(value = "/api/v1.0/routing", method = RequestMethod.GET, headers = "Accept=application/json;charset=UTF-8")
-    public String routing(@RequestParam(value = "route") String route) {
-
-        String decodeRoute = null;
-        NodeT startNode = null, endNode = null;
-
-        try {
-            decodeRoute = URLDecoder.decode(route, "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-
-        StringTokenizer st = new StringTokenizer(decodeRoute, ";");
-        String startCoord = st.nextToken();
-        String endCoord = st.nextToken();
-        if (startNode == null && endNode == null) {
-            startNode = nodeFindingService.findNearestNode(listRoutableNode,
-                    startCoord);
-            endNode = nodeFindingService.findNearestNode(listRoutableNode,
-                    endCoord);
-        }
-
-        System.out.println("Start node: " +startNode.getId());
-        System.out.println("End node: " +endNode.getId());
-        RoutingResult routingResult = routingService.findShortestPath(
-                startNode, endNode, AppConst.DIJKSTRA);
-
-        RoutingResponse response = new RoutingResponse(routingResult);
-
-        return response.toString();
-    }
+//    @RequestMapping(value = "/api/v1.0/routing", method = RequestMethod.GET, headers = "Accept=application/json;charset=UTF-8")
+//    public String routing(@RequestParam(value = "route") String route) {
+//
+//        String decodeRoute = null;
+//        NodeT startNode = null, endNode = null;
+//
+//        try {
+//            decodeRoute = URLDecoder.decode(route, "UTF-8");
+//        } catch (UnsupportedEncodingException e) {
+//            e.printStackTrace();
+//        }
+//
+//        StringTokenizer st = new StringTokenizer(decodeRoute, ";");
+//        String startCoord = st.nextToken();
+//        String endCoord = st.nextToken();
+//        if (startNode == null && endNode == null) {
+//            startNode = nodeFindingService.findNearestNode(listRoutableNode,
+//                    startCoord);
+//            endNode = nodeFindingService.findNearestNode(listRoutableNode,
+//                    endCoord);
+//        }
+//
+//        System.out.println("Start node: " +startNode.getId());
+//        System.out.println("End node: " +endNode.getId());
+//        RoutingResult routingResult = routingService.findShortestPath(
+//                startNode, endNode, AppConst.DIJKSTRA);
+//
+//        RoutingResponse response = new RoutingResponse(routingResult);
+//
+//        return response.toString();
+//    }
 
 }

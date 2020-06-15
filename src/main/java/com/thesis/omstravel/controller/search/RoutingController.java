@@ -39,8 +39,9 @@ public class RoutingController {
         return "home";
     }
 
-    @RequestMapping(value = "/advanced/search", method = RequestMethod.GET)
+    @RequestMapping(value = "/search/advanced", method = RequestMethod.GET)
         public String advancedSearch(@RequestParam(value = "keyword") String keyword) {
+
             return "home";
     }
 

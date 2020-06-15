@@ -22,7 +22,7 @@ let marker;
 
 $(document).ready(function () {
 
-  if (currenntURL.indexOf("/search") > -1) {
+  if (currenntURL.indexOf("/search?") > -1) {
     var searchEndPoint = "/api/v1.0/search";
     var searchParams = getUrlParameter("keyword");
     var searchAPI = host + searchEndPoint + "?keyword=" + encodeURI(searchParams);
@@ -52,6 +52,20 @@ $(document).ready(function () {
       return
     }
     routingNodes(from, to)
+  }
+  else if (currenntURL.indexOf("/search/advanced") > -1) {
+    let keyword = decodeURI(getUrlParameter("keyword"))
+    keyword = keyword.split("+").join(" ")
+    if (keyword === "") {
+      alert("Keyword cannot be empty")
+      return
+    }
+    console.log(keyword)
+    searchByGoogleGeocoding(keyword, function (result) {
+      places = result
+      console.log(places)
+      drawMap(places, [])
+    })
   }
   else {
     drawMap(places, []);

@@ -1,4 +1,4 @@
 .input-upload-img {
-    opacity: 1;
-    position: unset;
+    opacity: 1 !important;
+    position: unset !important;
 }
