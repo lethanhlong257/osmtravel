@@ -11,5 +11,10 @@ public interface IPointRepository extends MongoRepository<Point, Long> {
     Point findDistinctFirstByName(String name);
     Point findDistinctFirstByLatAndLon(double lat, double lon);
 
+    List<Point> findPointsByNameContains(String Keyword);
+
     List<Point> findPointByLat(double lat);
+
+    @Override
+    List<Point> findAll();
 }

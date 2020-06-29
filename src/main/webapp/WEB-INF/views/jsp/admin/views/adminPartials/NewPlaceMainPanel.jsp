@@ -42,7 +42,7 @@
                                 </div>
                             </form>
                             <hr />
-                            <form:form action="/admin/place/add" method="post" modelAttribute="Point">
+                            <form:form action="/admin/place/add" enctype="multipart/form-data" method="post" modelAttribute="Point">
                                 <div class="row">
                                     <div class="col-md-5">
                                         <div class="form-group">
@@ -110,13 +110,32 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Upload Image</label>
-                                            <form:input class="input-upload-img" accept="image/png, image/jpeg" type="file" id="myFile" path="img" />
+<%--                                            <form:input name="multipartFile" class="input-upload-img" accept="image/png, image/jpeg" type="file" path="img" />--%>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Phone number</label>
                                             <form:input id="input-place-phone" class="form-control" type="text" path="phone" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label data-toggle="tooltip" data-placement="top"
+                                                   title="Gia ca"
+                                            >Prices:</label>
+                                            <form:input class="form-control" type="text" path="price"  />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label data-toggle="tooltip" data-placement="top"
+                                                   title="dùng cho phân loại: mỗi tags cách nhau bằng dấu ;. ví dụ: lịch sử;công viên;giải trí"
+                                            >Tags:</label>
+
+                                            <form:input class="form-control" type="text" path="tags"  />
                                         </div>
                                     </div>
                                 </div>

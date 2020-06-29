@@ -1,5 +1,7 @@
 package com.thesis.omstravel.controller.search;
 
+import com.thesis.omstravel.model.DAO.point.IPointRepository;
+import com.thesis.omstravel.model.DAO.point.Point;
 import com.thesis.omstravel.model.Way;
 import com.thesis.omstravel.model.search.Search;
 import com.thesis.omstravel.model.search.SearchResultResponse;
@@ -24,6 +26,9 @@ public class RoutingController {
     @Autowired
     ISearchService searchService;
 
+    @Autowired
+    IPointRepository pointRepository;
+
     @RequestMapping(value = "/search", method = RequestMethod.GET)
     public String searchByName(@RequestParam(value = "keyword") String name, Model model) {
         List<Search> searchResult;
@@ -37,6 +42,16 @@ public class RoutingController {
         searchResult = searchService.matchName(decodedName, listString);
         model.addAttribute("listPoints", searchResult);
         return "home";
+    }
+
+    @RequestMapping(value = "/find", method = RequestMethod.GET)
+    public String find(@RequestParam(value = "keyword") String name, Model model) {
+        List<Point> pointList = pointRepository.findPointsByNameContains(name);
+        model.addAttribute("keyword", name);
+        model.addAttribute("isSearchResult", true);
+        model.addAttribute("points", pointList);
+
+        return "search-result";
     }
 
     @RequestMapping(value = "/search/advanced", method = RequestMethod.GET)

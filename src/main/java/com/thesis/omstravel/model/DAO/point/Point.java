@@ -5,6 +5,8 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import java.util.List;
+
 @Document(collection = "Point")
 public class Point {
 
@@ -47,6 +49,28 @@ public class Point {
 
     @Field(value = "desc")
     private String desc;
+
+    @Field(value = "tags")
+    private String tags;
+
+    @Field(value = "price")
+    private double price;
+
+    public String getTags() {
+        return tags;
+    }
+
+    public void setTags(String tags) {
+        this.tags = tags;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
 
     public Point() {
     }

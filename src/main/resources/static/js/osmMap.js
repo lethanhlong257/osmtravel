@@ -2,6 +2,7 @@
 const host = "http://www.localhost:8080";
 const SUCCESS_STATUS = "success"
 const OK_STATUS = "OK"
+let CURRENT_LOCATION = 'current+location';
 let places = [];
 let currenntURL = window.location.href;
 const hostingGeoCodingAPI = "https://maps.googleapis.com/maps/api/geocode/json"
@@ -11,17 +12,23 @@ let isRouting = false
 // Becareful to use because it is limited for request
 const GOOGLE_MAP_API_KEY = "AIzaSyAi0Yb8-l2pZVk2MOo8U2p26q2y9PcaS4k.r3m0v3";
 
-
 let defaultCoordHCM = [10.7743, 106.6669]; // coord mặc định, chinh giữa HCMC
 let zoomLevel = 13;
 let mapIdContainer = 'map'
 let map = L.map(mapIdContainer, {attributionControl: false})
-let marker;
+let marker = null;
 
-
+let currentLocation = {lat: 10.7743, lon: 106.6669, name: 'my current location', address:'' }
 
 $(document).ready(function () {
+  $('.find-on-map-button').click( function(){
+    scrollToMap()
+    handleFindPointOnMap($(this).attr('data-selectable'))
+  })
 
+  $('#current-location-button').click(function () {
+    handleCurrentLocation()
+  })
   if (currenntURL.indexOf("/search?") > -1) {
     var searchEndPoint = "/api/v1.0/search";
     var searchParams = getUrlParameter("keyword");
@@ -60,7 +67,6 @@ $(document).ready(function () {
       alert("Keyword cannot be empty")
       return
     }
-    console.log(keyword)
     searchByGoogleGeocoding(keyword, function (result) {
       places = result
       console.log(places)
@@ -71,21 +77,19 @@ $(document).ready(function () {
     drawMap(places, []);
   }
 
-  $("#form-advanced-search").submit(function (event) {
-    event.preventDefault()
+  $("#button-advanced-search").click(function (event) {
     const advancedSearchKeyword = $("#input-advanced-search").val()
-    console.log(advancedSearchKeyword)
+    searchByGoogleGeocoding(advancedSearchKeyword, function (result) {
+     $('#input-advanced-search-data').val(JSON.stringify(result))
+      console.log(JSON.stringify(result))
+    })
+
+
     if (advancedSearchKeyword === "") {
       alert("Search input is empty")
       return false
     }
-    searchByGoogleGeocoding(advancedSearchKeyword, function (result) {
-      places = result
-      console.log(places)
-      drawMap(places, [])
-    })
   })
-
 });
 
 function getUrlParameter(sParam) {
@@ -104,7 +108,6 @@ function getUrlParameter(sParam) {
 }
 
 function drawMap(places, latlngs) {
-  marker = null
   map.setView(defaultCoordHCM, zoomLevel)
   L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
     attribution: '© <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -117,42 +120,53 @@ function drawMap(places, latlngs) {
     map.fitBounds(polyline.getBounds());
   }
 
+  // code here show current
   places.map(place => {
-    marker = L.marker([place.lat, place.lon]).addTo(map);
-    marker.bindPopup("<b>"+place.name+"</b><br>");
+    let routingLink = `/routing?from=${CURRENT_LOCATION}&to=${encodeURI(place.name)}`
+    marker = L.marker([place.lat, place.lon])
+    map.addLayer(marker)
+    marker.bindPopup("<b>"+place.name+"</b><br><a href="+ routingLink +">Show directory</a>").openPopup();
+
   })
 }
 
 function searchByGoogleGeocoding(keyword, callback) {
   const searchPlace = []
   const urlEncodeKeyword = encodeURI(keyword)
-  const key = formatMapAPIKey(GOOGLE_MAP_API_KEY)
-  const geocodingAPI = hostingGeoCodingAPI + `?key=${key}` + `&address=${urlEncodeKeyword}`
-  $.get(geocodingAPI, function (data, status) {
-    if (status !== SUCCESS_STATUS) {
-      console.log("Error 02 call searchByGoogleGeocoding: " + status)
-      callback(searchPlace)
-    }
-    if (data.status !== OK_STATUS) {
-      console.log("Error 01 call searchByGoogleGeocoding: " + status)
-      console.log(data)
-      alert(`No result with keyword ${keyword}. Please search again`)
-      callback(searchPlace)
-    }
-
-    let searchResult = data.results
-    searchResult.forEach(result => {
-      let point = {
-        "address": result.formatted_address,
-        "lat": result.geometry.location.lat,
-        "lon": result.geometry.location.lng,
-        "name": keyword + " - " +result.address_components[0].long_name
+  if (keyword !== CURRENT_LOCATION) {
+    const key = formatMapAPIKey(GOOGLE_MAP_API_KEY)
+    const geocodingAPI = hostingGeoCodingAPI + `?key=${key}` + `&address=${urlEncodeKeyword}`
+    $.get(geocodingAPI, function (data, status) {
+      if (status !== SUCCESS_STATUS) {
+        console.log("Error 02 call searchByGoogleGeocoding: " + status)
+        callback(searchPlace)
       }
-      searchPlace.push(point)
-    })
-    callback(searchPlace)
+      if (data.status !== OK_STATUS) {
+        console.log("Error 01 call searchByGoogleGeocoding: " + status)
+        console.log(data)
+        alert(`No result with keyword ${keyword}. Please search again`)
+        callback(searchPlace)
+      }
 
-  })
+      let searchResult = data.results
+      searchResult.forEach(result => {
+        let point = {
+          "address": result.formatted_address,
+          "lat": result.geometry.location.lat,
+          "lon": result.geometry.location.lng,
+          "name": keyword + " - " +result.address_components[0].long_name
+        }
+        searchPlace.push(point)
+      })
+      callback(searchPlace)
+
+    })
+  } else {
+    determineCurrentLocation(postion => {
+      searchPlace.push(postion)
+      callback(searchPlace)
+    })
+  }
 }
 
 // bởi vì up len git là public Repository nên key cần chỉnh sửa xíu để tránh bị người khác dùng tool trộm xài
@@ -161,6 +175,7 @@ function formatMapAPIKey(api) {
 }
 
 function routingNodes(from, to) {
+  scrollToMap()
   searchByGoogleGeocoding(from, function (fromResult) {
     searchByGoogleGeocoding(to, function (toResult) {
       if (fromResult.length !== 1) {
@@ -200,4 +215,43 @@ function routingNodes(from, to) {
       })
     })
   })
+}
+
+function handleFindPointOnMap(point) {
+  //$('body').scroll({scrollTop: $("#map").offset().top})
+  let pointArr = point.split('-')
+  let lat = pointArr[0]
+  let lon = pointArr[1]
+  let name = pointArr[2]
+  let address = point[3]
+  places.push({name, lat, lon, address})
+  drawMap(places, null)
+}
+
+function handleCurrentLocation() {
+  determineCurrentLocation(location => {
+    places.push(location)
+    drawMap(places, null)
+  })
+}
+
+function determineCurrentLocation(callback) {
+  if (!currentLocation) {
+    navigator.geolocation.getCurrentPosition(position => {
+      let lat = position.coords.latitude
+      let lon = position.coords.longitude
+      let name = "My current location"
+      let address = ""
+      currentLocation = {lat, lon, name, address}
+      callback(currentLocation)
+    })
+  } else {
+    callback(currentLocation)
+  }
+}
+
+function scrollToMap() {
+  $('html, body').animate({
+    scrollTop: $("#map").offset().top
+  }, 1000);
 }

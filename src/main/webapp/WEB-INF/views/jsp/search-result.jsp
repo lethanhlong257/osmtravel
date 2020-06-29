@@ -6,7 +6,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>Tourist attraction</title>
+    <title>Search result - ${keywork}</title>
 
     <jsp:include page="partials/head.jsp" />
 </head>
@@ -16,13 +16,9 @@
     <jsp:include page="partials/header.jsp" />
 </header>
 <article>
-
     <jsp:include page="partials/slider.jsp" />
     <jsp:include page="partials/rent.jsp"/>
     <jsp:include page="partials/map.jsp" />
-    <jsp:include page="partials/sale.jsp" />
-    <jsp:include page="partials/contactHome.jsp" />
-    <jsp:include page="partials/project.jsp" />
 </article>
 <footer>
     <jsp:include page="partials/footer.jsp" />
