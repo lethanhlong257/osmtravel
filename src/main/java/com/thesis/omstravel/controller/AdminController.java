@@ -8,9 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -29,7 +27,8 @@ public class AdminController {
     public String dashboard(Model model) {
 
         List points = pointRepository.findAll();
-        model.addAttribute("totalLocation", 10);
+        long countLocation = pointRepository.count();
+        model.addAttribute("totalLocation", countLocation);
         model.addAttribute("points", points);
         return "admin/views/dashboard";
     }
@@ -39,6 +38,21 @@ public class AdminController {
         model.addAttribute("isPlaced", "true");
         model.addAttribute("Point", new Point());
         return "admin/views/NewPlaceMain";
+    }
+
+    @GetMapping("/admin/location/update/{id}")
+    public String updateLocationGet(@PathVariable("id") long id, Model model) {
+        Point point = pointRepository.findById(id);
+        model.addAttribute("Point", point);
+        return "admin/views/update-location";
+    }
+
+    @PostMapping("/admin/location/update/{id}")
+    public String updateLocationPut(@ModelAttribute("Point") Point newPoint, @PathVariable("id") long id, Model model) {
+        newPoint.setId(id);
+        pointRepository.save(newPoint);
+        model.addAttribute("isUpdated", true);
+        return "admin/views/update-location";
     }
 
     @RequestMapping(value = "admin/place/add", method = RequestMethod.POST)
@@ -98,5 +112,7 @@ public class AdminController {
         }
         return folderUpload;
     }
+
+
 
 }

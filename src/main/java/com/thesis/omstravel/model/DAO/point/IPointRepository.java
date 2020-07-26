@@ -18,6 +18,7 @@ public interface IPointRepository extends MongoRepository<Point, Long> {
     @Override
     List<Point> findAll();
 
+    Point findById(long id);
 
     Long deleteById(long id);
 }

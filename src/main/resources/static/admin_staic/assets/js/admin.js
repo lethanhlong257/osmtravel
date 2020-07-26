@@ -89,3 +89,9 @@ function removeLocation(id, name) {
     });
   }
 }
+
+function handleEditLocation(id) {
+  if (confirm(`Do you want to EDIT this location - id: ${id}?`)) {
+    location.replace(`/admin/location/update/${id}`)
+  }
+}

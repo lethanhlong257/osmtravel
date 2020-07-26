@@ -33,7 +33,7 @@
                                 <i class="material-icons">store</i>
                             </div>
                             <p class="card-category">Revenue</p>
-                            <h3 class="card-title">$34,245</h3>
+                            <h3 class="card-title">$0</h3>
                         </div>
                         <div class="card-footer">
                             <div class="stats">
@@ -91,21 +91,21 @@
                                 <div class="tab-pane active" id="profile">
                                     <table class="table">
                                         <tbody>
+                                        <tr><td>
+                                            <div class="form-check">
+                                                <label class="form-check-label">ID</label>
+                                            </div>
+                                        </td><td>Detail</td></tr>
                                         <c:forEach items="${points}" var="point">
                                             <tr>
                                                 <td>
                                                     <div class="form-check">
-                                                        <label class="form-check-label">
-                                                            <input class="form-check-input" type="checkbox" value="" checked>
-                                                            <span class="form-check-sign">
-                                                            <span class="check"></span>
-                                                        </span>
-                                                        </label>
+                                                        <label class="form-check-label">${point.id}</label>
                                                     </div>
                                                 </td>
                                                 <td>${point.name} | ${point.street}</td>
                                                 <td class="td-actions text-right">
-                                                    <button type="button" rel="tooltip" title="Edit Location" class="btn btn-primary btn-link btn-sm">
+                                                    <button onclick="handleEditLocation(${point.id})" type="button" rel="tooltip" title="Edit Location" class="btn btn-primary btn-link btn-sm">
                                                         <i class="material-icons">edit</i>
                                                     </button>
                                                     <button onclick="removeLocation(${point.id}, ${point.name})" type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
