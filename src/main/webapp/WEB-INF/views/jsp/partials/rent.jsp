@@ -17,7 +17,7 @@
                             <div class="box-rent-date"><i class="mdi mdi-calendar-outline"> </i>22/04/2019</div>
                             <div class="box-rent-img">
                                 <i class="mdi mdi-image-search-outline" title="Nhấn để phóng to ảnh" data-caption="${point.name}" data-fancybox="gallery"></i>
-                                <a href="https://www.tripadvisor.com/Attraction_Review-g293925-d1178970-Reviews-Dam_Sen_Water_Park-Ho_Chi_Minh_City.html">
+                                <a href="${point.link}">
                                     <c:choose>
                                         <c:when test="${point.img == null || point.img == ''}">
                                             <%
@@ -32,7 +32,7 @@
                                 </a>
                             </div>
                             <div class="box-rent-detail">
-                                <h3><a href="chi-tiet-cho-thue.png">${point.name}</a></h3>
+                                <h3><a href="${point.link}">${point.name}</a></h3>
                                 <h5> <i class="mdi mdi-map-marker-outline"></i>${point.street}</h5>
                                 <div class="box-rent-detail-option"><span>Du lịch</span><span>Giải trí</span><span>Ngoài trời</span></div>
                             </div>

@@ -140,6 +140,16 @@
                                     </div>
                                 </div>
                                 <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label data-toggle="tooltip" data-placement="top"
+                                                   title="link"
+                                            >Reference link:</label>
+                                            <form:input class="form-control" type="text" path="link"  />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>Descripton</label>

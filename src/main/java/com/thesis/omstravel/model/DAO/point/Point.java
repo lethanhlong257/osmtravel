@@ -56,7 +56,16 @@ public class Point {
     @Field(value = "price")
     private double price;
 
+    @Field(value = "link")
+    private String link;
 
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
 
     public String getTags() {
         return tags;
@@ -77,7 +86,7 @@ public class Point {
     public Point() {
     }
 
-    public Point(long id, String name, double lat, double lon, String street, String country, String ward, String city, String district, String zipCode, String img, String phone, String desc) {
+    public Point(long id, String name, double lat, double lon, String street, String country, String ward, String city, String district, String zipCode, String img, String phone, String desc, String tags, double price, String link) {
         this.id = id;
         this.name = name;
         this.lat = lat;
@@ -91,6 +100,9 @@ public class Point {
         this.img = img;
         this.phone = phone;
         this.desc = desc;
+        this.tags = tags;
+        this.price = price;
+        this.link = link;
     }
 
     public long getId() {
