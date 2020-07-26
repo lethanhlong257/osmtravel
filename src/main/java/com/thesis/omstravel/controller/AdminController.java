@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.util.List;
 
 @Controller
 public class AdminController {
@@ -25,8 +26,11 @@ public class AdminController {
     SequenceGenerator sequenceGenerator;
 
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
-    public String dashboard() {
+    public String dashboard(Model model) {
 
+        List points = pointRepository.findAll();
+        model.addAttribute("totalLocation", 10);
+        model.addAttribute("points", points);
         return "admin/views/dashboard";
     }
 

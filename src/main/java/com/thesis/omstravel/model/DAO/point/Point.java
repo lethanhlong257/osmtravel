@@ -56,6 +56,8 @@ public class Point {
     @Field(value = "price")
     private double price;
 
+
+
     public String getTags() {
         return tags;
     }

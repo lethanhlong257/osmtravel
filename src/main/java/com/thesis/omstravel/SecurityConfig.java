@@ -29,6 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        http.csrf().disable();
         // Chỉ cho phép user có quyền ADMIN truy cập đường dẫn /admin/**
         http.authorizeRequests().antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')");
         // Cấu hình remember me, thời gian là 1296000 giây

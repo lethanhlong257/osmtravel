@@ -21,7 +21,6 @@ $(document).ready(function () {
     })
   })
 
-
 })
 
 function searchByGoogleGeocoding(keyword, callback) {
@@ -76,4 +75,17 @@ function seperateAddress(address) {
     addressObj = {...addressObj, city: "Hồ Chí Minh"}
   }
   return addressObj
+}
+
+function removeLocation(id, name) {
+  if (confirm(`Do you want to remove this location - id: ${id}?`)) {
+    $.ajax({
+      url: `/api/admin/location/remove/${id}`,
+      type: 'DELETE',
+      success: function() {
+        alert(`Removed location ${name}`)
+        location.reload()
+      }
+    });
+  }
 }
