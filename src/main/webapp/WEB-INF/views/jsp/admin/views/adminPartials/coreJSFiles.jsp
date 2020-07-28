@@ -1,5 +1,5 @@
 <!--   Core JS Files   -->
-<script src="/admin_staic/assets/js/core/jquery.min.js"></script>
+<%--<script src="/admin_staic/assets/js/core/jquery.min.js"></script>--%>
 <script src="/admin_staic/assets/js/core/popper.min.js"></script>
 <script src="/admin_staic/assets/js/core/bootstrap-material-design.min.js"></script>
 <script src="/admin_staic/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
@@ -31,8 +31,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
 <!-- Library for adding dinamically elements -->
 <script src="/admin_staic/assets/js/plugins/arrive.min.js"></script>
-<!--  Google Maps Plugin    -->
-<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
 <!-- Chartist JS -->
 <script src="/admin_staic/assets/js/plugins/chartist.min.js"></script>
 <!--  Notifications Plugin    -->

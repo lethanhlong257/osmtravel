@@ -108,7 +108,7 @@
                                                     <button onclick="handleEditLocation(${point.id})" type="button" rel="tooltip" title="Edit Location" class="btn btn-primary btn-link btn-sm">
                                                         <i class="material-icons">edit</i>
                                                     </button>
-                                                    <button onclick="removeLocation(${point.id}, ${point.name})" type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
+                                                    <button onclick="removeLocation(${point.id}, '${point.name}')" type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
                                                         <i class="material-icons">close</i>
                                                     </button>
                                                 </td>

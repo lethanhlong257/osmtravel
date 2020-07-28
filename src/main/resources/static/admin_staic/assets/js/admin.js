@@ -20,7 +20,6 @@ $(document).ready(function () {
 
     })
   })
-
 })
 
 function searchByGoogleGeocoding(keyword, callback) {
@@ -55,7 +54,6 @@ function searchByGoogleGeocoding(keyword, callback) {
       searchPlace.push(point)
     })
     callback(searchPlace)
-
   })
 }
 

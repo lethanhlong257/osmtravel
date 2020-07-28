@@ -12,3 +12,5 @@
 <!-- CSS Just for demo purpose, don't include it in your project -->
 <link href="/admin_staic/assets/demo/demo.css" rel="stylesheet" />
 <link href="/admin_staic/assets/css/admin.css" rel="stylesheet" />
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
