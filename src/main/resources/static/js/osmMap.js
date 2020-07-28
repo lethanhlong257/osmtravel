@@ -18,7 +18,8 @@ let mapIdContainer = 'map'
 let map = L.map(mapIdContainer, {attributionControl: false})
 let marker = null;
 
-let currentLocation = {lat: 10.7743, lon: 106.6669, name: 'my current location', address:'' }
+//let currentLocation = {lat: 10.7743, lon: 106.6669, name: 'my current location', address:'' } // Hoặc đổi qua toạ độ khác
+let currentLocation = null;
 
 $(document).ready(function () {
   $('.find-on-map-button').click( function(){
@@ -183,7 +184,7 @@ function routingNodes(from, to) {
         return false
       }
       if (toResult.length !== 1) {
-        alert("Cannot detect From address, Please choose another")
+        alert("Cannot detect To address, Please choose another")
         return false
       }
       let fromObj = fromResult[0]
