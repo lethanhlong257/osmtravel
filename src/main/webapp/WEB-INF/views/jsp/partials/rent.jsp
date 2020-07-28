@@ -5,7 +5,7 @@
         <div class="title-page">
             <c:choose>
                 <c:when test="${isSearchResult == true}"><h3><a>Result search</a></h3></c:when>
-                <c:otherwise><h3><a>SỬA LẠI CÁI GÌ NGAY ĐÂY ĐI</a></h3></c:otherwise>
+                <c:otherwise><h3><a>SOME TOURIST DESTINATION</a></h3></c:otherwise>
             </c:choose>
         </div>
         <div></div>

@@ -603,7 +603,7 @@ body .overlay-menu.overlay-in {
   padding-left: 10px;
 }
 .search button {
-  width: 150px;
+  width: 432px;
   border-radius: 50px;
   text-transform: uppercase;
   font-size: 16px;
@@ -745,6 +745,7 @@ body .overlay-menu.overlay-in {
   background-position: center;
   padding: 50px 0;
   margin-top: 100px;
+  margin-bottom: 100px;
 }
 .rent .title-page {
   margin-top: -65px;
@@ -1875,6 +1876,42 @@ body .overlay-menu.overlay-in {
   margin-right: auto;
   margin-top: 100px;
 }
+
+.main-search-address{
+  background-color: white;
+  box-shadow: 5px 10px #d1d1d1;
+  margin-top: 40px;
+  margin-bottom: 30px;
+}
+#form-advanced-search{
+  margin-bottom: 20px;
+}
+#input-advanced-search{
+  width: 700px;
+  margin-bottom: 20px;
+  height: 40px;
+}
+
+#input-routing-from{
+  width: 500px;
+  margin-bottom: 20px;
+  height: 40px;
+  padding: 0 10px;
+}
+
+#input-routing-to{
+  width: 500px;
+  margin-bottom: 20px;
+  height: 40px;
+  padding: 0 10px;
+}
+
+.current-location-button{
+  height: 40px;
+  margin-bottom: 20px;
+  color: darkgreen;
+}
+
 
 /*# sourceMappingURL=layout.css.map */
 
