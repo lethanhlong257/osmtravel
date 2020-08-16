@@ -35,8 +35,8 @@ public class SearchController {
 
     List<Way> listWay = OSMparser.getWay();
     //List<NodeT> listNode = OSMparser.getNode();
-    List<Relation> listRelation = OSMparser.getRelation();
-    //List <NodeT> listRoutableNode = OSMparser.getRoutableNode(listWay, listRelation);
+//    List<Relation> listRelation = OSMparser.getRelation();
+//    List <NodeT> listRoutableNode = OSMparser.getRoutableNode(listWay, listRelation);
 
     @RequestMapping(value = "/api/v1.0/search", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody

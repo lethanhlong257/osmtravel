@@ -23,10 +23,10 @@
                                             <%
                                                 int random = (int)(Math.random() * 6 + 1);
                                             %>
-                                            <img src="../img/<%=random%>.png"/>
+                                            <img src="../../../assert/img/<%=random%>.png"/>
                                         </c:when>
                                         <c:otherwise>
-                                            <img src="${point.img}"/>
+                                            <img src="../../../assert/img/${point.img}"/>
                                         </c:otherwise>
                                     </c:choose>
                                 </a>

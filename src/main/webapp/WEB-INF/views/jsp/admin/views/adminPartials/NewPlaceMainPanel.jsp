@@ -42,12 +42,12 @@
                                 </div>
                             </form>
                             <hr />
-                            <form:form action="/admin/place/add" enctype="multipart/form-data" method="post" modelAttribute="Point">
+                            <form:form action="/admin/place/add" enctype="multipart/form-data" method="post" modelAttribute="ExtendedPoint">
                                 <div class="row">
                                     <div class="col-md-5">
                                         <div class="form-group">
                                             <label class="bmd-label-floating">Location name</label>
-                                            <form:input id="input-place-name" type="text" class="form-control" path="name" />
+                                            <form:input id="input-place-name" type="text" class="form-control" path="name" name="name" />
                                         </div>
                                     </div>
                                     <div class="col-md-3">
@@ -110,7 +110,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Upload Image</label>
-<%--                                            <form:input name="multipartFile" class="input-upload-img" accept="image/png, image/jpeg" type="file" path="img" />--%>
+                                            <form:input name="imgFile" class="input-upload-img" accept="image/png, image/jpeg" type="file" path="imgFile" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
